@@ -8,31 +8,30 @@
 <body>
 <h1>Article stuff</h1>
 
-
 <?php
-try{
-  // to connect to database on phpadmin or something liek that
-  $db = new PDO('mysql:host=localhost;dbname=article_db', 'root', 'hit326');
+  include 'db.php';
+  //Set this attribute while testing so PDO doesn't silence error reporting
 
+  //find what we looking for in sql
+  $sql= "SELECT * FROM author";
+  //
+  $result = $db->query($sql);
 
-//Testing connection
-  if ($db) {
-    echo "connected";
-  } else{
-    echo "What a shit connection1";
-  }
-
-
-}
-//catch code will run if above aint right
-catch(PDOException $e){
-  $errors[]=$e->getMessage();
-  echo "What a shit connection2";
-}
-
-
+  if(!empty($result)){
+           //Loop getting each name
+           foreach($result as $item){
+             echo "<p>{$item['author_id']}, {$item['firstname']}, {$item['lastname']}</p>";
+           }
+        }
+        //if there is nothing in the database
+        else{
+           echo "<p>No results</p>";
+        }
 
 ?>
+
+</table>
+
 
 </body>
 </html>
