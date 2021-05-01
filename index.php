@@ -9,12 +9,18 @@
 <h1>Article stuff</h1>
 
 <?php
-  include 'db.php';
-  //Set this attribute while testing so PDO doesn't silence error reporting
+//path to folders
+DEFINE ("LIB",$_SERVER['DOCUMENT_ROOT']."/article/lib");
+DEFINE ("VIEWS",LIB."/views");
+//path to files
+DEFINE ("MODEL",LIB."/model.php");
+DEFINE ("APP",LIB."/application.php");
 
+
+  include MODEL;
   //find what we looking for in sql
   $sql= "SELECT * FROM author";
-  //
+  // will execute the sql statement as a PDOstatement object
   $result = $db->query($sql);
 
   if(!empty($result)){
@@ -29,9 +35,6 @@
         }
 
 ?>
-
-</table>
-
 
 </body>
 </html>

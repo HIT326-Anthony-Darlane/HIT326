@@ -4,6 +4,7 @@ create database article_db;
 use article_db;
 
 drop table if exists author;
+drop table if exists article;
 
 create table author(
   author_id int(50) NOT NULL AUTO_INCREMENT,
@@ -23,3 +24,6 @@ create table author(
 
 --drop table if exists article;--
 */
+
+insert into author (firstname,lastname) values ("Jon","Smith");
+insert into author (firstname,lastname) values ("Jane","Doe");

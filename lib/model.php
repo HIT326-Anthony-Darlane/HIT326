@@ -1,5 +1,5 @@
 <?php
-
+//GETS DATABASE 
 $db = null;
 $errors= array();
 
@@ -25,5 +25,4 @@ if(count($errors) > 0){
    }
    echo "</ul>";
 }
-
  ?>
