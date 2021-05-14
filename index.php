@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8' />
-  <title>article</title>
-</head>
-
-<body>
-<h1>THIS IS AN ARTICLE WEBSITE</h1>
-
 <?php
 //To connect the stuff together. pls keep in//
 //path to folders
 DEFINE ("LIB",$_SERVER['DOCUMENT_ROOT']."/article/lib");
 DEFINE ("VIEWS",LIB."/views");
+DEFINE ("PARTIALS",VIEWS."/partials");
 //path to files
 DEFINE ("MODEL",LIB."/model.php");
 DEFINE ("APP",LIB."/application.php");
 
+require PARTIALS.'/home.php';
 
   include MODEL;
   //find what we looking for in sql
@@ -34,7 +26,6 @@ DEFINE ("APP",LIB."/application.php");
         else{
            echo "<p>No results</p>";
         }
-?>
 
-</body>
-</html>
+
+?>
