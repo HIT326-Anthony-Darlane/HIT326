@@ -8,6 +8,7 @@ DEFINE ("PARTIALS",VIEWS."/partials");
 DEFINE ("MODEL",LIB."/model.php");
 DEFINE ("APP",LIB."/application.php");
 
+//will call the home page from the top
 require PARTIALS.'/home.php';
 
   include MODEL;
