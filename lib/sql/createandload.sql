@@ -11,7 +11,7 @@ create table users(
   username varchar(40) not null,
   firstname varchar(40) not null,
   lastname varchar(40) not null,
-  primary key (author_id)
+  primary key (user_id)
 )ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
 
 create table article(
