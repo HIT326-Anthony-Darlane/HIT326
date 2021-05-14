@@ -3,7 +3,7 @@ create database article_db;
 
 use article_db;
 
-drop table if exists author;
+drop table if exists users;
 drop table if exists article;
 
 create table users(
@@ -24,8 +24,8 @@ create table article(
 
 
 /*To insert data into tables*/
-insert into author (firstname,lastname) values ("Jon","Smith");
-insert into author (firstname,lastname) values ("Jane","Doe");
+insert into users (username,firstname,lastname) values ("User1","Jon","Smith");
+insert into users (username,firstname,lastname) values ("User2","Jane","Doe");
 
 insert into article (title,content) values ("This is an article title","this is
   content for the first article title. Suspendisse cursus cursus lectus. In hac
