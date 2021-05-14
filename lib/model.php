@@ -8,7 +8,7 @@ try{
   $db = new PDO('mysql:host=localhost;dbname=article_db', 'root', 'hit326');
 //Testing connection
   if ($db) {
-    echo "<p>connected to database successfully</p>";
+    echo "<p>connected to database successfully</p><hr>";
   }
 //else catch error. so below is is like the else statement??
 }
