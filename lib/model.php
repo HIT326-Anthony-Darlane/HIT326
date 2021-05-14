@@ -1,5 +1,5 @@
 <?php
-//GETS DATABASE 
+//GETS DATABASE
 $db = null;
 $errors= array();
 

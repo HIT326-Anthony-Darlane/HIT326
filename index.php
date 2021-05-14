@@ -26,14 +26,13 @@ DEFINE ("APP",LIB."/application.php");
   if(!empty($result)){
            //Loop getting each name
            foreach($result as $item){
-             echo "<p>{$item['author_id']}, {$item['firstname']}, {$item['lastname']}</p>";
+             echo "<p>{$item['firstname']}, {$item['lastname']}</p>";
            }
         }
         //if there is nothing in the database
         else{
            echo "<p>No results</p>";
         }
-
 ?>
 
 </body>

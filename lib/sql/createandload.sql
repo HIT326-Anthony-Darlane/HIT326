@@ -13,17 +13,18 @@ create table author(
   primary key (author_id)
 )ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
 
-/*create table article(
-  article_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+create table article(
+  article_id int(100) NOT NULL AUTO_INCREMENT,
   title varchar(100) not null,
-  published_at  DEFAULT(datetime('now','localtime')),
-  updated_at
-);
+  content varchar(1000) not null,
+  primary key (article_id)
+)ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
 
 
 
---drop table if exists article;--
-*/
-
+/*To insert data into tables*/
 insert into author (firstname,lastname) values ("Jon","Smith");
 insert into author (firstname,lastname) values ("Jane","Doe");
+
+insert into article (title,content) values ("This is an article title","I hate writing this article sucks.");
+insert into article (title,content) values ("A second Title","I am gay");
