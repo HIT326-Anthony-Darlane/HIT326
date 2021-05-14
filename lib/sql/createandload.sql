@@ -6,8 +6,9 @@ use article_db;
 drop table if exists author;
 drop table if exists article;
 
-create table author(
-  author_id int(50) NOT NULL AUTO_INCREMENT,
+create table users(
+  user_id int(50) NOT NULL AUTO_INCREMENT,
+  username varchar(40) not null,
   firstname varchar(40) not null,
   lastname varchar(40) not null,
   primary key (author_id)
