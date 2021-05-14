@@ -10,9 +10,10 @@ try{
   if ($db) {
     echo "<p>connected to database successfully</p>";
   }
-//else catch error
+//else catch error. so below is is like the else statement??
 }
 //catch code will run if above aint right pre much acts as the 'else' statement to your if
+//copied it too
 catch(PDOException $e){
   $errors[]=$e->getMessage();
 }
