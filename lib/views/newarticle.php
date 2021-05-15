@@ -12,6 +12,7 @@
     require PARTIALS."/form.title.php";
     require PARTIALS."/form.content.php";
     ?>
+
   <input type='submit' name='submitarticle' value='Post Article'>
   </form>
 
