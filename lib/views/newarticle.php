@@ -8,14 +8,12 @@
 
 <body>
   <form action='index.php' method='POST'>
-  <!--  <input type='hidden' name='_method' value='post' />-->
-
-    <label for='atitle'>Title</label>
-    <input type='text' name='title'/>
-    <label for='acontext'>Content</label>
-    <input type='text' name='content'/>
-  <input type='submit' name='submit' value='Post Article'>
-</form>
+    <?php
+    require PARTIALS."/form.title.php";
+    require PARTIALS."/form.content.php";
+    ?>
+  <input type='submit' name='submitarticle' value='Post Article'>
+  </form>
 
 
 

@@ -6,11 +6,15 @@
 </head>
 
 <body>
-  <!--<form action=?signup method='POST'>
-    <input type='hidden' name='_method' value='post'/>
-    <label for='fi'-->
-
-<p>poop</p>
+<h3>Sign up!</h3>
+<form action='index.php' method='POST'>
+  <?php
+  require PARTIALS."/form.username.php";
+  require PARTIALS."/form.firstname.php";
+  require PARTIALS."/form.lastname.php";
+  ?>
+<input type='submit' name='submituser' value='Create User'>
+</form>
 
 </body>
 </html>
