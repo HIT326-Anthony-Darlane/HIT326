@@ -7,7 +7,8 @@
 
 <body>
 <h1>ARTICLE WEBSITE</h1>
-<a href='?articles'>All Articles</a>
+<a href='?articles'>Home(lists all articles)</a>
+<a href="?signin">Signin</a>
 <a href="?signup">Signup</a>
 <a href="?newarticle">New Article</a>
 <hr>

@@ -6,17 +6,16 @@
 </head>
 
 <body>
-<h3>Sign up!</h3>
+<h3>Sign in</h3>
 <form action='index.php' method='POST'>
   <?php
   require PARTIALS."/form.username.php";
-  require PARTIALS."/form.firstname.php";
-  require PARTIALS."/form.lastname.php";
   ?>
   <!--placeholder-->
   <label>password</label>
   <input type='password' name='password'/>
-<input type='submit' name='signup' value='Sign up!'>
+
+<input type='submit' name='signin' value='Sign in'>
 </form>
 
 </body>

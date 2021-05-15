@@ -21,6 +21,11 @@ require VIEWS.'/home.php';
         exit();
       }
 
+      if(isset($_GET['signin'])){
+        require VIEWS.'/signin.php';
+        exit();
+      }
+
 
       if(isset($_GET['signup'])){
         require VIEWS.'/signup.php';
@@ -34,6 +39,7 @@ require VIEWS.'/home.php';
 
       //this part for adding the new article
       //if the _POST's submit button was called
+      //will find the input name
       if(isset($_POST['submitarticle'])){
         //if the _POST's input title and content are not empty, say it worked else fuk
         if(!empty($_POST['title']) && !empty($_POST['content'])){
@@ -57,7 +63,7 @@ require VIEWS.'/home.php';
       }
 
       //This for when you press submit in new user
-      if(isset($_POST['submituser'])){
+      if(isset($_POST['signup'])){
         //if the _POST's input title and content are not empty, say it worked else fuk
         if(!empty($_POST['username']) && !empty($_POST['firstname']) && !empty($_POST['lastname'])){
           $username = $_POST['username'];
