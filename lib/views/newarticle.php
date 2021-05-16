@@ -10,6 +10,9 @@
   <form action='index.php' method='POST'>
     <?php
     require PARTIALS."/form.title.php";
+    ?>
+    <br>
+    <?php
     require PARTIALS."/form.content.php";
     ?>
 

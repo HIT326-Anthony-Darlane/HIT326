@@ -10,14 +10,16 @@
 <h1>ths is article.php!</h1>
 <?php
 //find what we looking for in sql
-$sql= "SELECT * FROM article";
+$sql= "SELECT * FROM article i, users ii where i.user_id=ii.user_id";
 // will execute the sql statement as a PDOstatement object
 $result = $db->query($sql);
 
 if(!empty($result)){
          //Loop getting each name
          foreach($result as $item){
-           echo "<h2>{$item['title']}</h2><p>{$item['content']}</p>";
+           echo "<h2>{$item['title']}</h2>
+           <p>{$item['content']}</p>
+           <p>Written by: {$item['username']}</p>";
          }
       }
       //if there is nothing in the database
