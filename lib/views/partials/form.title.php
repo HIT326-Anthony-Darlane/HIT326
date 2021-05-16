@@ -1,2 +1,2 @@
-<label for='atitle'>Title:</label>
+<label for='aTitle'>Title:</label>
 <input type='text' name='title'/>
