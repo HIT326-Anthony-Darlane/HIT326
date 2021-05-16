@@ -13,6 +13,7 @@
 <a href="?signin">Signin</a>
 <a href="?signup">Signup</a>
 <a href="?newarticle">New Article</a>
+<a href="?signedin">Signedin</a>
 <hr>
 
 
