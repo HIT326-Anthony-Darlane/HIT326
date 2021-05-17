@@ -9,11 +9,13 @@
 <body>
   <form action='index.php' method='POST'>
     <?php
-    require PARTIALS."/form.title.php";
-    echo "<br>";
-    require PARTIALS."/form.content.php";
+      require PARTIALS."/form.title.php";
+      echo "<br>";
+      require PARTIALS."/form.content.php";
+      echo "<br>";
     ?>
   <!--TO SELECT WHICH USER-->
+    <label for="pickuser_id">Author:</label>
     <select name="user_id">
   <?php
     $sql="SELECT user_id, firstname, lastname from users";
@@ -28,7 +30,7 @@
     echo "it did not work";
   }
   ?>
-</select>
+  </select>
 
   <input type='submit' name='submitarticle' value='Post Article'>
   </form>

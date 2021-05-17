@@ -8,6 +8,7 @@
 <body>
 
 <h1>ths is article.php!</h1>
+<hr>
 <?php
 //find what we looking for in sql
 $sql= "SELECT * FROM article i, users ii where i.user_id=ii.user_id";
@@ -20,6 +21,7 @@ if(!empty($result)){
            echo "<h2>{$item['title']}</h2>
            <p>{$item['content']}</p>
            <p>Written by: {$item['username']}</p>";
+           echo "<hr>";
          }
       }
       //if there is nothing in the database
