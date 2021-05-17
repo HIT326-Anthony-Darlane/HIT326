@@ -78,8 +78,10 @@ require VIEWS.'/home.php';
           $firstname = $_POST['firstname'];
           $lastname = $_POST['lastname'];
           $password = $_POST['password'];
+          //Salting password for security//
+          $hashed_password = password_hash($password,PASSWORD_DEFAULT);
           //so that it can insert into database, dont know how specifically but it works
-          $query = "INSERT INTO users (username, firstname, lastname,password) VALUES ('$username','$firstname','$lastname','$password')" ;
+          $query = "INSERT INTO users (username, firstname, lastname,password) VALUES ('$username','$firstname','$lastname','$hashed_password')" ;
           $run = mysqli_query($db,$query) or die(mysqli_error());
           //when you press submit, it will show this message
           if($run){
