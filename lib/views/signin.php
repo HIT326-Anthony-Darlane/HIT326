@@ -10,6 +10,7 @@
 <form action='index.php' method='POST'>
   <?php
   require PARTIALS."/form.username.php";
+  echo "<br>";
   require PARTIALS."/form.password.php";
   ?>
   <!--placeholder-->

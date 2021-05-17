@@ -13,6 +13,7 @@
     echo "<br>";
     require PARTIALS."/form.content.php";
     ?>
+  <!--TO SELECT WHICH USER-->
     <select name="user_id">
   <?php
     $sql="SELECT user_id, firstname, lastname from users";
@@ -24,12 +25,10 @@
     }
   }
   else{
-    echo "AHHHH";
+    echo "it did not work";
   }
   ?>
 </select>
-
-
 
   <input type='submit' name='submitarticle' value='Post Article'>
   </form>

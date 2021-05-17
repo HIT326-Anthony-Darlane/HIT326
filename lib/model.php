@@ -25,7 +25,7 @@ catch(PDOException $e){
 }
 //finds out what error it is
 if(count($errors) > 0){
-   echo "<p>What a shit connection</p>";
+   echo "<p>The connection did not work</p>";
    echo "<ul>";
    foreach($errors As $error){
       echo "<li>{$error}</li>";
