@@ -80,12 +80,24 @@ require VIEWS.'/home.php';
             echo "There was a problem making this user";
           }
         }
-
         //when you press submit but you didn't fill in the inputs :|
         else{
           echo "You didn't fill in everything dipshit";
         }
+
       }
+
+
+
+      if(isset($_POST['signin'])){
+        if(!empty($_POST['username']) && !empty($_POST['password'])){
+          echo "signed in!";
+        }
+        else{
+          echo "you did not fill in everything bro";
+        }
+      }
+
 
 
 

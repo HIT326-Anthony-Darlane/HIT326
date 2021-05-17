@@ -10,10 +10,10 @@
 <form action='index.php' method='POST'>
   <?php
   require PARTIALS."/form.username.php";
+  require PARTIALS."/form.password.php";
   ?>
   <!--placeholder-->
-  <label>password</label>
-  <input type='password' name='password'/>
+
 
 <input type='submit' name='signin' value='Sign in'>
 </form>
