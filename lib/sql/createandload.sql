@@ -11,6 +11,7 @@ create table users(
   username varchar(40) not null,
   firstname varchar(40) not null,
   lastname varchar(40) not null,
+  password varchar(50) not null,
   primary key (user_id)
 )ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
 
@@ -26,8 +27,8 @@ create table article(
 
 
 /*To insert data into tables*/
-insert into users (username,firstname,lastname) values ("User1","Jon","Smith");
-insert into users (username,firstname,lastname) values ("User2","Jane","Doe");
+insert into users (username,firstname,lastname,password) values ("User1","Jon","Smith","password");
+insert into users (username,firstname,lastname,password) values ("User2","Jane","Doe","1234");
 
 insert into article (title,content,user_id) values ("This is an article title","this is
   content for the first article title. Suspendisse cursus cursus lectus. In hac

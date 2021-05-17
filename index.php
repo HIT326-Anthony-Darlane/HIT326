@@ -68,12 +68,13 @@ require VIEWS.'/home.php';
       //This for when you press submit in new user
       if(isset($_POST['signup'])){
         //if the _POST's input title and content are not empty, say it worked else fuk
-        if(!empty($_POST['username']) && !empty($_POST['firstname']) && !empty($_POST['lastname'])){
+        if(!empty($_POST['username']) && !empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['password'])){
           $username = $_POST['username'];
           $firstname = $_POST['firstname'];
           $lastname = $_POST['lastname'];
+          $password = $_POST['password'];
           //so that it can insert into database, dont know how specifically but it works
-          $query = "INSERT INTO users (username, firstname, lastname) VALUES ('$username','$firstname','$lastname')" ;
+          $query = "INSERT INTO users (username, firstname, lastname,password) VALUES ('$username','$firstname','$lastname','$password')" ;
           $run = mysqli_query($db,$query) or die(mysqli_error());
           //when you press submit, it will show this message
           if($run){
