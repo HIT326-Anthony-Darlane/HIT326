@@ -37,6 +37,10 @@ require VIEWS.'/home.php';
         exit();
       }
 
+      if(isset($_GET['emptyinput'])){
+        echo "You must've forgotten to fill something in :(";
+      }
+
 
 
       //this part for adding the new article
@@ -54,9 +58,6 @@ require VIEWS.'/home.php';
           //when you press submit, it will show this message
           if($run){
             echo "added new article!";
-            //may not be right????????????//
-            header('location:index.php?articles');
-            exit();
           }
           else{
             echo "couldn't add new article";
@@ -64,8 +65,8 @@ require VIEWS.'/home.php';
         }
         //when you press submit but you didn't fill in the inputs :|
         else{
-          echo "You need to fill in everything";
-
+          header('location:index.php?emptyinput');
+          exit();
         }
 
       }
@@ -93,7 +94,8 @@ require VIEWS.'/home.php';
         }
         //when you press submit but you didn't fill in the inputs :|
         else{
-          echo "You didn't fill in everything dipshit";
+          header('location:index.php?emptyinput');
+          exit();
         }
       }
 
@@ -101,32 +103,18 @@ require VIEWS.'/home.php';
 // Will show the message "signed in when the sign in button is pressed "
       if(isset($_POST['signin'])){
         if(!empty($_POST['username']) && !empty($_POST['password'])){
+
           $username = $_POST['username'];
           $password = $_POST['password'];
-
           $query = "SELECT * FROM users WHERE username = '$username' and password = '$password'";
           echo "signed in!";
         }
         else{
-          echo "you did not fill in everything bro";
+          header('location:index.php?emptyinput');
+          exit();
         }
       }
 
-      ///////THIS IS ONLY FOR TESTING //////
-      if(isset($_GET['test'])){
-        require VIEWS.'/test.php';
-        exit();
-      }
-
-      if(isset($_POST['submittest'])){
-        if(!empty($_POST['author'])){
-          echo "cool it worked";
-        }
-        else{
-          echo "it didnt work and the bitgch is empty";
-        }
-      }
-      /////////////////////////////////////////
 
 
 
