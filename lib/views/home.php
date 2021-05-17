@@ -13,6 +13,9 @@
 <a href="?signin">Signin</a>
 <a href="?signup">Signup</a>
 <a href="?newarticle">New Article</a>
+<!--ONLY FOR TESTING. CAN BE DELETED-->
+<a href="?test">TESTING HERE</a>
+<!------------------------------------>
 <hr>
 
 

@@ -1,19 +1,15 @@
+<!--ONLY FOR TESTING. THE WHOLE FILE CAN BE DELETED-->
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset='utf-8' />
-  <title>signup</title>
+  <title>test</title>
 </head>
-<h3>make new article here</h3>
+<h3>test</h3>
 
 <body>
   <form action='index.php' method='POST'>
-    <?php
-    require PARTIALS."/form.title.php";
-    echo "<br>";
-    require PARTIALS."/form.content.php";
-    ?>
-    <select name="user_id">
+    <select name="author">
   <?php
     $sql="SELECT user_id, firstname, lastname from users";
     $result=$db->query($sql);
@@ -28,13 +24,8 @@
   }
   ?>
 </select>
-
-
-
-  <input type='submit' name='submitarticle' value='Post Article'>
+  <input type='submit' name='submittest' value='Post Article'>
   </form>
-
-
 
 </body>
 </html>

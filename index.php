@@ -37,15 +37,17 @@ require VIEWS.'/home.php';
         exit();
       }
 
+
+
       //this part for adding the new article
       //if the _POST's submit button was called
       //will find the input name
       if(isset($_POST['submitarticle'])){
         //if the _POST's input title and content are not empty, say it worked else fuk
-        if(!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])){
+        if(!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['user_id'])){
           $title = $_POST['title'];
           $content = $_POST['content'];
-          $author = $_POST['author'];
+          $user_id = $_POST['user_id'];
           //so that it can insert into database, dont know how specifically but it works
           $query = "INSERT INTO article (title, content,user_id) VALUES ('$title','$content','$user_id')" ;
           $run = mysqli_query($db,$query) or die(mysqli_error());
@@ -98,7 +100,21 @@ require VIEWS.'/home.php';
         }
       }
 
+      ///////THIS IS ONLY FOR TESTING //////
+      if(isset($_GET['test'])){
+        require VIEWS.'/test.php';
+        exit();
+      }
 
+      if(isset($_POST['submittest'])){
+        if(!empty($_POST['author'])){
+          echo "cool it worked";
+        }
+        else{
+          echo "it didnt work and the bitgch is empty";
+        }
+      }
+      /////////////////////////////////////////
 
 
 
