@@ -54,6 +54,9 @@ require VIEWS.'/home.php';
           //when you press submit, it will show this message
           if($run){
             echo "added new article!";
+            //may not be right????????????//
+            header('location:index.php?articles');
+            exit();
           }
           else{
             echo "couldn't add new article";
@@ -62,7 +65,9 @@ require VIEWS.'/home.php';
         //when you press submit but you didn't fill in the inputs :|
         else{
           echo "You need to fill in everything";
+
         }
+
       }
 
       //This for when you press submit in new user
