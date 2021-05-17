@@ -101,6 +101,10 @@ require VIEWS.'/home.php';
 // Will show the message "signed in when the sign in button is pressed "
       if(isset($_POST['signin'])){
         if(!empty($_POST['username']) && !empty($_POST['password'])){
+          $username = $_POST['username'];
+          $password = $_POST['password'];
+
+          $query = "SELECT * FROM users WHERE username = '$username' and password = '$password'";
           echo "signed in!";
         }
         else{
