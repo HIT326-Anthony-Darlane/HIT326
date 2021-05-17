@@ -42,11 +42,12 @@ require VIEWS.'/home.php';
       //will find the input name
       if(isset($_POST['submitarticle'])){
         //if the _POST's input title and content are not empty, say it worked else fuk
-        if(!empty($_POST['title']) && !empty($_POST['content'])){
+        if(!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])){
           $title = $_POST['title'];
           $content = $_POST['content'];
+          $author = $_POST['author'];
           //so that it can insert into database, dont know how specifically but it works
-          $query = "INSERT INTO article (title, content) VALUES ('$title','$content')" ;
+          $query = "INSERT INTO article (title, content,user_id) VALUES ('$title','$content','$user_id')" ;
           $run = mysqli_query($db,$query) or die(mysqli_error());
           //when you press submit, it will show this message
           if($run){
@@ -84,11 +85,10 @@ require VIEWS.'/home.php';
         else{
           echo "You didn't fill in everything dipshit";
         }
-
       }
 
 
-
+// Will show the message "signed in when the sign in button is pressed "
       if(isset($_POST['signin'])){
         if(!empty($_POST['username']) && !empty($_POST['password'])){
           echo "signed in!";

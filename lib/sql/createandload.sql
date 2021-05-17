@@ -18,9 +18,9 @@ create table article(
   article_id int(100) NOT NULL AUTO_INCREMENT,
   title varchar(100) not null,
   content varchar(1000) not null,
-  username varchar(40),
+  user_id int,
   primary key (article_id),
-  foreign key (username) references users(username)
+  foreign key (user_id) references users(user_id)
 )ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
 
 

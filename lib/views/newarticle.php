@@ -10,15 +10,29 @@
   <form action='index.php' method='POST'>
     <?php
     require PARTIALS."/form.title.php";
-    ?>
-    <br>
-    <?php
+    echo "<br>";
     require PARTIALS."/form.content.php";
     ?>
+    <select name="author">
+  <?php
+    $sql="SELECT user_id, firstname, lastname from users";
+    $result=$db->query($sql);
+
+    if(!empty($result)){
+      foreach($result as $result){
+      echo "<option value=''>{$result['firstname']} {$result['lastname']}</option>";
+    }
+  }
+  else{
+    echo "AHHHH";
+  }
+  ?>
+</select>
+
+
 
   <input type='submit' name='submitarticle' value='Post Article'>
   </form>
-
 
 
 
