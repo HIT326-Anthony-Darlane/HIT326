@@ -60,7 +60,7 @@ require VIEWS.'/home.php';
           $run = mysqli_query($db,$query) or die(mysqli_error());
           //when you press submit, it will show this message
           if($run){
-            echo "added new article!";
+            header('location:index.php?articles');
           }
           else{
             echo "couldn't add new article";

@@ -17,8 +17,8 @@ else{
 <hr>
 <?php
 //WILL SHOW ALL ARTICLES IN DATABASE
-//find what we looking for in sql
-$sql= "SELECT * FROM article i, users ii where i.user_id=ii.user_id";
+//find what we looking for in sql and will order it by descending order aka. newest first
+$sql= "SELECT * FROM article i, users ii where i.user_id=ii.user_id order by created_date desc";
 $result = $db->query($sql);
 
 if(!empty($result)){
@@ -26,7 +26,8 @@ if(!empty($result)){
          foreach($result as $item){
            echo "<h2>{$item['title']}</h2>
            <p>{$item['content']}</p>
-           <p>Written by: {$item['username']}</p>";
+           <p>Written by: {$item['username']}</p>
+           <p>Published: {$item['created_date']}</p>";
            echo "<hr>";
          }
       }

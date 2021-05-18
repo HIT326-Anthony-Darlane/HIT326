@@ -7,7 +7,7 @@ drop table if exists users;
 drop table if exists article;
 
 create table users(
-  user_id int(50) NOT NULL AUTO_INCREMENT,
+  user_id int NOT NULL AUTO_INCREMENT,
   username varchar(40) unique not null,
   firstname varchar(40) not null,
   lastname varchar(40) not null,
@@ -16,18 +16,30 @@ create table users(
 )ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
 
 create table article(
-  article_id int(100) NOT NULL AUTO_INCREMENT,
+  article_id int NOT NULL AUTO_INCREMENT,
   title varchar(255) not null,
   content varchar(1000) not null,
   user_id int,
   created_date timestamp,
   primary key (article_id),
-  foreign key (user_id) references users(user_id)
+  foreign key (user_id) references users (user_id)
 )ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
 
+create table tag(
+  tag_id int not null AUTO_INCREMENT,
+  tag varchar(50),
+  primary key (tag_id)
+)ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
 
+create table tagging(
+  article_id int not null,
+  tag_id int not null,
+  primary key (article_id, tag_id),
+  foreign key (article_id) references article (article_id) on delete cascade,
+  foreign key (tag_id) references tag (tag_id) on delete cascade
+)ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
 
-/*To insert data into tables*/
+/*some default data*/
 /*password for user1 is 'password'*/
 /*password for user2 is '1234'*/
 insert into users (username,firstname,lastname,password) values ("User1","Jon","Smith","$2y$10$ooV7YV9FZXMVYwp6Bxz5MOMA9sKVzm3VY8iJTTnfTc7t3tj9BRGbK");
