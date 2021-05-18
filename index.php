@@ -8,7 +8,8 @@ DEFINE ("PARTIALS",VIEWS."/partials");
 DEFINE ("MODEL",LIB."/model.php");
 DEFINE ("APP",LIB."/application.php");
 
-//will call the home page from the top which is just the header? it will rremain on all pages 
+//will call the home page from the top which is just the header? it will rremain on all pages
+session_start();
 require VIEWS.'/home.php';
 
 
@@ -25,7 +26,11 @@ require VIEWS.'/home.php';
         require VIEWS.'/signin.php';
         exit();
       }
-
+      //when you press the logout link, it will end all set sessions stuff.
+      if(isset($_GET['logout'])){
+        header('location:index.php?articles');
+        session_destroy();
+      }
 
       if(isset($_GET['signup'])){
         require VIEWS.'/signup.php';
@@ -117,7 +122,9 @@ require VIEWS.'/home.php';
             //verify password
             if(password_verify($password, $hash)){
               //if password is the same, will say this
-              echo "YOU LOGGED IN OMG";
+              $_SESSION['username'] = $username;
+              $_SESSION['loggedin'] = true;
+              header('location:index.php?articles');
             }
             else{
           //if password wrong, will say this

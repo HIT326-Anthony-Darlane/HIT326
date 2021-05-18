@@ -6,8 +6,14 @@
 </head>
 
 <body>
-
-<h1>ths is article.php!</h1>
+<?php
+if(isset($_SESSION['username'])){
+  echo "<h1>Welcome ".$_SESSION['username'].", to Article Website!</h1>";
+}
+else{
+  echo "<h1>Welcome to Article Website!</h1>";
+}
+?>
 <hr>
 <?php
 //WILL SHOW ALL ARTICLES IN DATABASE
