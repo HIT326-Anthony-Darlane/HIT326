@@ -101,25 +101,21 @@ require VIEWS.'/home.php';
 
 
 // Will show the message "signed in when the sign in button is pressed "
-      if(isset($_POST['signin'])){
-        if(!empty($_POST['username']) && !empty($_POST['password'])){
-
-          $username = $_POST['username'];
-          $password = $_POST['password'];
-          //$hashed_password = password_hash($password,PASSWORD_DEFAULT);
-          $query = "SELECT * FROM users WHERE username = '$username' and password = '$hashed_password'";
-          $run = mysqli_query($db,$query);
-          $row = mysqli_fetch_array($run, MYSQLI_ASSOC);
-          $count = mysqli_num_rows($run);
-          if($count == 1){
-            //if(password_verify($password,$row['password'])){
-              echo "signed in!";
-          //  }
-          }
-          else {
-            echo "invalid username or password :(";
-          }
-        }
+if(isset($_POST['signin'])){
+  if(!empty($_POST['username']) && !empty($_POST['password'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $query = "SELECT * FROM users WHERE username = '$username'";
+    $run = mysqli_query($db,$query);
+    $row = mysqli_fetch_array($run, MYSQLI_ASSOC);
+    $count = mysqli_num_rows($run);
+    if($count == 1){
+      echo "username was found. not sure about password yet";
+      }
+    else {
+      echo "invalid username";
+    }
+  }
         else{
           header('location:index.php?emptyinput');
           exit();
