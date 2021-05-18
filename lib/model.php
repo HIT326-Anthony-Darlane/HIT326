@@ -10,13 +10,6 @@ try{
   $dbname='article_db';
 
   $db=mysqli_connect($server,$username,$password,$dbname);
-  // to connect to database on phpadmin or something liek that
-//  $db = new PDO('mysql:host=localhost;dbname=article_db', 'root', 'hit326');
-//Testing connection
-  /*if ($db) {
-    echo "<p>connected to database successfully</p>";
-  }*/
-//else catch error. so below is is like the else statement??
 }
 //catch code will run if above aint right pre much acts as the 'else' statement to your if
 //copied it too

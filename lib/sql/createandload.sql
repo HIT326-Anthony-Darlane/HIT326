@@ -28,8 +28,10 @@ create table article(
 
 
 /*To insert data into tables*/
-insert into users (username,firstname,lastname,password) values ("User1","Jon","Smith","password");
-insert into users (username,firstname,lastname,password) values ("User2","Jane","Doe","1234");
+/*password for user1 is 'password'*/
+/*password for user2 is '1234'*/
+insert into users (username,firstname,lastname,password) values ("User1","Jon","Smith","$2y$10$ooV7YV9FZXMVYwp6Bxz5MOMA9sKVzm3VY8iJTTnfTc7t3tj9BRGbK");
+insert into users (username,firstname,lastname,password) values ("User2","Jane","Doe","$2y$10$wkSoT3noyNLcDPMfc4fV1ees0csAf5dubeIKRJ6PCUAPGnUmaajG.");
 
 insert into article (title,content,user_id) values ("This is an article title","this is
   content for the first article title. Suspendisse cursus cursus lectus. In hac

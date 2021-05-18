@@ -10,9 +10,9 @@
 <h1>ths is article.php!</h1>
 <hr>
 <?php
+//WILL SHOW ALL ARTICLES IN DATABASE
 //find what we looking for in sql
 $sql= "SELECT * FROM article i, users ii where i.user_id=ii.user_id";
-// will execute the sql statement as a PDOstatement object
 $result = $db->query($sql);
 
 if(!empty($result)){

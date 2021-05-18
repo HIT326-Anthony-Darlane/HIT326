@@ -14,7 +14,7 @@
       require PARTIALS."/form.content.php";
       echo "<br>";
     ?>
-  <!--TO SELECT WHICH USER-->
+  <!--TO SELECT WHICH USER WHO WROTE THE ARTICLE FOR NOW?-->
     <label for="pickuser_id">Author:</label>
     <select name="user_id">
   <?php

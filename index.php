@@ -8,14 +8,14 @@ DEFINE ("PARTIALS",VIEWS."/partials");
 DEFINE ("MODEL",LIB."/model.php");
 DEFINE ("APP",LIB."/application.php");
 
-//will call the home page from the top
+//will call the home page from the top which is just the header? it will rremain on all pages 
 require VIEWS.'/home.php';
 
 
 //connecting to model so that it is always conneected to the database
   include MODEL;
 
-//when the link is pressed it will come here and do this :|
+//when the link is pressed it will come here and do this
       if(isset($_GET['articles'])){
         require VIEWS.'/article.php';
         exit();
@@ -36,12 +36,10 @@ require VIEWS.'/home.php';
         require VIEWS.'/newarticle.php';
         exit();
       }
-      //if user did not fill in all inputs, they will be redirected here. you can more below.
+      //if user did not fill in all inputs, they will be redirected here. you can see more below.
       if(isset($_GET['emptyinput'])){
         echo "You must've forgotten to fill something in :(";
       }
-
-
 
       //this part for adding the new article
       //if the _POST's submit button was called
@@ -73,7 +71,7 @@ require VIEWS.'/home.php';
 
       //This for when you press submit in new user
       if(isset($_POST['signup'])){
-        //if the _POST's input title and content are not empty, say it worked else fuk
+        //if the _POST's input title and content are not empty, say it worked else
         if(!empty($_POST['username']) && !empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['password'])){
           $username = $_POST['username'];
           $firstname = $_POST['firstname'];
@@ -84,7 +82,7 @@ require VIEWS.'/home.php';
           //so that it can insert into database, dont know how specifically but it works
           $query = "INSERT INTO users (username, firstname, lastname,password) VALUES ('$username','$firstname','$lastname','$hashed_password')" ;
           $run = mysqli_query($db,$query) or die(mysqli_error());
-          //when you press submit, it will show this message
+          //when you press submit, it will show this message if successful
           if($run){
             echo "Added new user";
           }
@@ -100,45 +98,42 @@ require VIEWS.'/home.php';
       }
 
 
-// Will show the message "signed in when the sign in button is pressed "
-if(isset($_POST['signin'])){
-  if(!empty($_POST['username']) && !empty($_POST['password'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $query = "SELECT * FROM users WHERE username = '$username'";
-    $run = mysqli_query($db,$query);
-    $row = mysqli_fetch_array($run, MYSQLI_ASSOC);
-    $count = mysqli_num_rows($run);
-    //will find the 1 username in database, else will say invalid username
-    if($count == 1){
-      //will find password with username that was searched
-      $passquery = "SELECT password from users where username = '$username'";
-      $passrun = mysqli_query($db,$query);
-      $passrow = mysqli_fetch_array($passrun, MYSQLI_ASSOC);
-      $hash = $passrow['password'];
-      //verify password
-      if(password_verify($password, $hash)){
-        //if password is the same, will say this
-        echo "YOU LOGGED IN OMG";
-      }
-      else{
-        //if password wrong, will say this
-        echo "entered wrong password";
+      //This is for when you wannt to sign in
+      if(isset($_POST['signin'])){
+        if(!empty($_POST['username']) && !empty($_POST['password'])){
+          $username = $_POST['username'];
+          $password = $_POST['password'];
+          $query = "SELECT * FROM users WHERE username = '$username'";
+          $run = mysqli_query($db,$query);
+          $row = mysqli_fetch_array($run, MYSQLI_ASSOC);
+          $count = mysqli_num_rows($run);
+          //will find the 1 username in database, else will say invalid username
+          if($count == 1){
+            //will find password with username that was searched
+            $passquery = "SELECT password from users where username = '$username'";
+            $passrun = mysqli_query($db,$query);
+            $passrow = mysqli_fetch_array($passrun, MYSQLI_ASSOC);
+            $hash = $passrow['password'];
+            //verify password
+            if(password_verify($password, $hash)){
+              //if password is the same, will say this
+              echo "YOU LOGGED IN OMG";
+            }
+            else{
+          //if password wrong, will say this
+          echo "entered wrong password";
+          }
         }
+        else {
+          //if username is not in datase
+        echo "invalid username";
       }
-    else {
-      //if username is not in datase
-      echo "invalid username";
     }
-  }
-        else{
-          //will go to emptyinput thing above and say you didn't fill in everything
-          header('location:index.php?emptyinput');
-          exit();
+          else{
+            //will go to emptyinput thing above and say you didn't fill in everything
+            header('location:index.php?emptyinput');
+            exit();
+          }
         }
-      }
-
-
-
 
 ?>
