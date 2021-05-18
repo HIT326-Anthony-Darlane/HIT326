@@ -106,15 +106,18 @@ require VIEWS.'/home.php';
 
           $username = $_POST['username'];
           $password = $_POST['password'];
-          $query = "SELECT * FROM users WHERE username = '$username' and password = '$password'";
+          //$hashed_password = password_hash($password,PASSWORD_DEFAULT);
+          $query = "SELECT * FROM users WHERE username = '$username' and password = '$hashed_password'";
           $run = mysqli_query($db,$query);
           $row = mysqli_fetch_array($run, MYSQLI_ASSOC);
           $count = mysqli_num_rows($run);
           if($count == 1){
+            //if(password_verify($password,$row['password'])){
               echo "signed in!";
+          //  }
           }
           else {
-            echo "invalid username or password";
+            echo "invalid username or password :(";
           }
         }
         else{
