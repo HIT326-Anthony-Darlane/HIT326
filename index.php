@@ -109,20 +109,30 @@ if(isset($_POST['signin'])){
     $run = mysqli_query($db,$query);
     $row = mysqli_fetch_array($run, MYSQLI_ASSOC);
     $count = mysqli_num_rows($run);
+    //will find the 1 username in database, else will say invalid username
     if($count == 1){
+      //will find password with username that was searched
       $passquery = "SELECT password from users where username = '$username'";
       $passrun = mysqli_query($db,$query);
       $passrow = mysqli_fetch_array($passrun, MYSQLI_ASSOC);
       $hash = $passrow['password'];
+      //verify password
       if(password_verify($password, $hash)){
+        //if password is the same, will say this
         echo "YOU LOGGED IN OMG";
       }
+      else{
+        //if password wrong, will say this
+        echo "entered wrong password";
+        }
       }
     else {
+      //if username is not in datase
       echo "invalid username";
     }
   }
         else{
+          //will go to emptyinput thing above and say you didn't fill in everything
           header('location:index.php?emptyinput');
           exit();
         }
