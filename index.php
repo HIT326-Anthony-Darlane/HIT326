@@ -8,9 +8,9 @@ DEFINE ("PARTIALS",VIEWS."/partials");
 DEFINE ("MODEL",LIB."/model.php");
 DEFINE ("APP",LIB."/application.php");
 
-
 //will call the home page from the top
 require VIEWS.'/home.php';
+
 
 //connecting to model so that it is always conneected to the database
   include MODEL;
@@ -36,7 +36,7 @@ require VIEWS.'/home.php';
         require VIEWS.'/newarticle.php';
         exit();
       }
-
+      //if user did not fill in all inputs, they will be redirected here. you can more below.
       if(isset($_GET['emptyinput'])){
         echo "You must've forgotten to fill something in :(";
       }
@@ -107,7 +107,15 @@ require VIEWS.'/home.php';
           $username = $_POST['username'];
           $password = $_POST['password'];
           $query = "SELECT * FROM users WHERE username = '$username' and password = '$password'";
-          echo "signed in!";
+          $run = mysqli_query($db,$query);
+          $row = mysqli_fetch_array($run, MYSQLI_ASSOC);
+          $count = mysqli_num_rows($run);
+          if($count == 1){
+              echo "signed in!";
+          }
+          else {
+            echo "invalid username or password";
+          }
         }
         else{
           header('location:index.php?emptyinput');

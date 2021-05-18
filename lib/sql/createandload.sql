@@ -8,7 +8,7 @@ drop table if exists article;
 
 create table users(
   user_id int(50) NOT NULL AUTO_INCREMENT,
-  username varchar(40) not null,
+  username varchar(40) unique not null,
   firstname varchar(40) not null,
   lastname varchar(40) not null,
   password varchar(255) not null,
@@ -20,6 +20,7 @@ create table article(
   title varchar(255) not null,
   content varchar(1000) not null,
   user_id int,
+  created_date timestamp,
   primary key (article_id),
   foreign key (user_id) references users(user_id)
 )ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
