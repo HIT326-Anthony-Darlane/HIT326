@@ -110,7 +110,13 @@ if(isset($_POST['signin'])){
     $row = mysqli_fetch_array($run, MYSQLI_ASSOC);
     $count = mysqli_num_rows($run);
     if($count == 1){
-      echo "username was found. not sure about password yet";
+      $passquery = "SELECT password from users where username = '$username'";
+      $passrun = mysqli_query($db,$query);
+      $passrow = mysqli_fetch_array($passrun, MYSQLI_ASSOC);
+      $hash = $passrow['password'];
+      if(password_verify($password, $hash)){
+        echo "YOU LOGGED IN OMG";
+      }
       }
     else {
       echo "invalid username";
