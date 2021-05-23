@@ -71,8 +71,8 @@ require VIEWS.'/home.php';
           header('location:index.php?emptyinput');
           exit();
         }
-
       }
+
 
       //This for when you press submit in new user
       if(isset($_POST['signup'])){
@@ -102,6 +102,17 @@ require VIEWS.'/home.php';
         }
       }
 
+      //trying to do delete function
+      if(isset($_POST['deletearticle'])){
+        $query = "DELETE FROM article WHERE article_id=";
+        $run = mysqli_query($db,$query) or die(mysqli_error());
+        if($run){
+          echo "delete success";
+        }
+        else{
+          echo "your gay";
+        }
+      }
 
       //This is for when you wannt to sign in
       if(isset($_POST['signin'])){

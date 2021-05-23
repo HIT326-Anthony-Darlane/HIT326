@@ -8,6 +8,7 @@
 <body>
 <h3>Sign in</h3>
 <form action='index.php' method='POST'>
+  <input type='hidden' name='signin' value='signin'>
   <?php
   require PARTIALS."/form.username.php";
   echo "<br>";
@@ -16,7 +17,7 @@
   <!--placeholder-->
 
 
-<input type='submit' name='signin' value='Sign in'>
+<input type='submit' value='Sign in'>
 </form>
 
 </body>

@@ -13,8 +13,11 @@ if(isset($_SESSION['username'])){
 else{
   echo "<h1>Welcome to Article Website!</h1>";
 }
+
+echo "<hr>";
 ?>
-<hr>
+<form action='index.php' method='POST'>
+
 <?php
 //WILL SHOW ALL ARTICLES IN DATABASE
 //find what we looking for in sql and will order it by descending order aka. newest first
@@ -24,10 +27,13 @@ $result = $db->query($sql);
 if(!empty($result)){
          //Loop getting each name
          foreach($result as $item){
+           echo "<input type='hidden' name='deletearticle' value=''>";
            echo "<h2>{$item['title']}</h2>
            <p>{$item['content']}</p>
            <p>Written by: {$item['username']}</p>
-           <p>Published: {$item['created_date']}</p>";
+           <p>Published: {$item['created_date']}</p>
+
+           <input type='submit' value='Delete'>";
            echo "<hr>";
          }
       }
@@ -35,7 +41,8 @@ if(!empty($result)){
       else{
          echo "<p>No results</p>";
       }
-
   ?>
+</form>
+
 </body>
 </html>

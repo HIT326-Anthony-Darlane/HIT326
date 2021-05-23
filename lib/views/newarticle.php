@@ -8,6 +8,7 @@
 
 <body>
   <form action='index.php' method='POST'>
+    <input type='hidden' name='submitarticle' value='submit article'>
     <?php
       require PARTIALS."/form.title.php";
       echo "<br>";
@@ -32,7 +33,7 @@
   ?>
   </select>
 
-  <input type='submit' name='submitarticle' value='Post Article'>
+  <input type='submit' value='Post Article'>
   </form>
 
 
