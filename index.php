@@ -102,17 +102,20 @@ require VIEWS.'/home.php';
         }
       }
 
-      //trying to do delete function
-      if(isset($_POST['deletearticle'])){
-        $query = "DELETE FROM article WHERE article_id=";
+      //delete article
+      if(isset($_GET['delete'])){
+        $article_id=$_GET['delete'];
+        $query = "DELETE FROM article WHERE article_id='$article_id'";
         $run = mysqli_query($db,$query) or die(mysqli_error());
         if($run){
-          echo "delete success";
+          header('location:index.php?articles');
+          exit();
         }
         else{
-          echo "your gay";
+          echo "There was a problem trying to delete this article";
         }
       }
+
 
       //This is for when you wannt to sign in
       if(isset($_POST['signin'])){

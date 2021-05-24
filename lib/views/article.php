@@ -26,21 +26,25 @@ $result = $db->query($sql);
 
 if(!empty($result)){
          //Loop getting each name
-         foreach($result as $item){
-           echo "<input type='hidden' name='deletearticle' value=''>";
-           echo "<h2>{$item['title']}</h2>
-           <p>{$item['content']}</p>
-           <p>Written by: {$item['username']}</p>
-           <p>Published: {$item['created_date']}</p>
+           while($item = mysqli_fetch_array($result)){
+             echo
+             "<h2>{$item['title']}</h2>
+             <p>{$item['content']}</p>
+             <p>Written by: {$item['username']}</p>
+             <p>Published: {$item['created_date']}</p>";
+             //Only someone who is logged in will be able to delete articles
+             if(isset($_SESSION['loggedin'])){
+               //will insert delete button with its article id to delete
+             echo "<a href='index.php?delete={$item['article_id']}'>delete</a>";
+              }
+              echo "<hr>";
+             }
+           }
+          //if there is nothing in the database
+         else{
+           echo "<p>No results</p>";
+          }
 
-           <input type='submit' value='Delete'>";
-           echo "<hr>";
-         }
-      }
-      //if there is nothing in the database
-      else{
-         echo "<p>No results</p>";
-      }
   ?>
 </form>
 
