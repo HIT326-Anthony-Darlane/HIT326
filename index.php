@@ -81,9 +81,18 @@ DEFINE ("APP",LIB."/application.php");
 
       if(isset($_POST['update_article'])){
         if(!empty($_POST['title']) && !empty($_POST['content'])){
+          $article_id = $_POST['article_id'];
           $title = $_POST['title'];
           $content = $_POST['content'];
-          $query = "INSERT INTO article (title, content) VALUES ('$title','$content')" ;
+          $query = "UPDATE article SET title='$title', content='$content' WHERE article_id='$article_id'" ;
+          $run = mysqli_query($db,$query) or die(mysqli_error());
+          if($run){
+            header('location:index.php?articles');
+            exit();
+          }
+          else{
+            echo "There was a problem trying to delete this article";
+          }
         }
       }
 
