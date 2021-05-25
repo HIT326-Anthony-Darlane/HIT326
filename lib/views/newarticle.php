@@ -13,6 +13,7 @@
     <label for="pickuser_id">Author:</label>
     <select name='user_id'>
   <?php
+
     $sql="SELECT user_id, firstname, lastname from users";
     $result=$db->query($sql);
 

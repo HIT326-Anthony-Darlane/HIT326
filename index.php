@@ -8,14 +8,14 @@ DEFINE ("PARTIALS",VIEWS."/partials");
 DEFINE ("MODEL",LIB."/model.php");
 DEFINE ("APP",LIB."/application.php");
 
-//will call the home page from the top which is just the header? it will rremain on all pages
-session_start();
-require VIEWS.'/home.php';
-
-
 //connecting to model so that it is always conneected to the database
   include MODEL;
   include APP;
+
+  //will call the home page from the top which is just the header? it will rremain on all pages
+  session_start();
+  require VIEWS.'/home.php';
+
 
 //when the link is pressed it will come here and do this
       if(isset($_GET['articles'])){
@@ -77,11 +77,17 @@ require VIEWS.'/home.php';
       //edit article not finished
       if(isset($_GET['edit_view'])){
         require VIEWS.'/editarticle.php';
-
+        //this is so that when you are trying to create an article, it will not show an error
+        //cause its trying to find values
+        $_SESSION['edit_view'] = true;
       }
 
       if(isset($_POST['update_article'])){
+        if(!empty($_POST['title']) && !empty($_POST['content'])){
+          $title = $_POST['title'];
+          $content = $_POST['content'];
 
+        }
       }
 
 
