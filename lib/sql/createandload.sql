@@ -15,23 +15,24 @@ create table users(
   primary key (user_id)
 )ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
 
+create table tag(
+  tag varchar(50),
+  primary key (tag)
+)ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
+
 create table article(
   article_id int NOT NULL AUTO_INCREMENT,
   title varchar(255) not null,
   content varchar(1000) not null,
   user_id int,
+  tag varchar(255),
   created_date timestamp,
   primary key (article_id),
-  foreign key (user_id) references users (user_id)
+  foreign key (user_id) references users (user_id),
+  foreign key (tag) references tag (tag)
 )ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
 
-create table tag(
-  tag_id int not null AUTO_INCREMENT,
-  tag varchar(50),
-  primary key (tag_id)
-)ENGINE=InnoDB, DEFAULT CHARACTER SET utf8;
-
-create table tagging(
+/*create table tagging(
   article_id int not null,
   tag_id int not null,
   primary key (article_id, tag_id),
@@ -44,6 +45,10 @@ create table tagging(
 /*password for user2 is '1234'*/
 insert into users (username,firstname,lastname,password) values ("User1","Jon","Smith","$2y$10$ooV7YV9FZXMVYwp6Bxz5MOMA9sKVzm3VY8iJTTnfTc7t3tj9BRGbK");
 insert into users (username,firstname,lastname,password) values ("User2","Jane","Doe","$2y$10$wkSoT3noyNLcDPMfc4fV1ees0csAf5dubeIKRJ6PCUAPGnUmaajG.");
+
+insert into tag (tag) values ("cool");
+insert into tag (tag) values ("funny");
+insert into tag (tag) values ("bad");
 
 insert into article (title,content,user_id) values ("This is an article title","this is
   content for the first article title. Suspendisse cursus cursus lectus. In hac

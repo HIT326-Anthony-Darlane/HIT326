@@ -8,6 +8,7 @@
       echo "<br>";
       require PARTIALS."/form.content.php";
       echo "<br>";
+      require PARTIALS."/form.tags.php";
     ?>
   <!--TO SELECT WHICH USER WHO WROTE THE ARTICLE FOR NOW?-->
     <label for="pickuser_id">Author:</label>

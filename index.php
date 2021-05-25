@@ -52,10 +52,19 @@ DEFINE ("APP",LIB."/application.php");
       //will find the input name
       if(isset($_POST['submitarticle'])){
         //if the _POST's input title and content are not empty, say it worked else fuk
-        if(!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['user_id'])){
+        if(!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['user_id']) && !empty($_POST['taglist'])){
           $title = $_POST['title'];
           $content = $_POST['content'];
           $user_id = $_POST['user_id'];
+          $tags = $_POST['taglist'];
+
+          $tags_list = array();
+          $tags_list = explode(",", $tags);
+          foreach($tags_list as $item){
+            $item = trim($item);
+            $tagquery = "INSERT INTO tag (tag) VALUES ('$item')" ;
+            $run = mysqli_query($db,$tagquery) or die(mysqli_error());
+          }
           //so that it can insert into database, dont know how specifically but it works
           $query = "INSERT INTO article (title, content,user_id) VALUES ('$title','$content','$user_id')" ;
           $run = mysqli_query($db,$query) or die(mysqli_error());
