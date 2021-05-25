@@ -16,7 +16,7 @@ else{
 
 echo "<hr>";
 ?>
-<form action='index.php' method='POST'>
+
 
 <?php
 //WILL SHOW ALL ARTICLES IN DATABASE
@@ -34,8 +34,14 @@ if(!empty($result)){
              <p>Published: {$item['created_date']}</p>";
              //Only someone who is logged in will be able to delete articles
              if(isset($_SESSION['loggedin'])){
-               //will insert delete button with its article id to delete
-             echo "<a href='index.php?delete={$item['article_id']}'>delete</a>";
+               //To edit article
+              echo "<a href='?edit={$item['article_id']}'>edit </a>";
+              echo "<form action='index.php' method='POST'>
+                <input type='hidden' name='delete' value='delete_article'/>
+                <input type='hidden' name='article_id' value={$item['article_id']}/>
+                <input type='submit' value='delete'/>
+              </form>";
+
               }
               echo "<hr>";
              }
@@ -46,7 +52,7 @@ if(!empty($result)){
           }
 
   ?>
-</form>
+
 
 </body>
 </html>

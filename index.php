@@ -15,6 +15,7 @@ require VIEWS.'/home.php';
 
 //connecting to model so that it is always conneected to the database
   include MODEL;
+  include APP;
 
 //when the link is pressed it will come here and do this
       if(isset($_GET['articles'])){
@@ -73,6 +74,20 @@ require VIEWS.'/home.php';
         }
       }
 
+      //edit article
+      if(isset($_GET['edit'])){
+        require VIEWS.'/newarticle.php';
+        $article_id=$_GET['edit'];
+        $query = "UPDATE FROM article WHERE article_id='$article_id'";
+      }
+
+
+        if(isset($_POST['delete'])){
+          $article_id=$_POST['article_id'];
+          delete_article($article_id);
+        }
+
+
 
       //This for when you press submit in new user
       if(isset($_POST['signup'])){
@@ -101,21 +116,6 @@ require VIEWS.'/home.php';
           exit();
         }
       }
-
-      //delete article
-      if(isset($_GET['delete'])){
-        $article_id=$_GET['delete'];
-        $query = "DELETE FROM article WHERE article_id='$article_id'";
-        $run = mysqli_query($db,$query) or die(mysqli_error());
-        if($run){
-          header('location:index.php?articles');
-          exit();
-        }
-        else{
-          echo "There was a problem trying to delete this article";
-        }
-      }
-
 
       //This is for when you wannt to sign in
       if(isset($_POST['signin'])){

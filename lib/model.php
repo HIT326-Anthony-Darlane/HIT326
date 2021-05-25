@@ -25,4 +25,22 @@ if(count($errors) > 0){
    }
    echo "</ul>";
 }
+
+function delete_article($article_id){
+  global $db;
+  $query = "DELETE FROM article WHERE article_id='$article_id'";
+  $run = mysqli_query($db,$query) or die(mysqli_error());
+  if($run){
+    header('location:index.php?articles');
+    exit();
+  }
+  else{
+    echo "There was a problem trying to delete this article";
+  }
+}
+
+
+
+
+
  ?>
