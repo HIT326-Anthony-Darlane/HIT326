@@ -26,7 +26,7 @@ if(!empty($result)){
              if(isset($_SESSION['loggedin'])){
                //To edit article
               echo "<form action='index.php' method='GET'>
-                <input type='hidden' name='edit' value='edit article'/>
+                <input type='hidden' name='edit_view' value='edit article'/>
                 <input type='hidden' name='article_id' value={$item['article_id']}/>
                 <input type='submit' value='edit'/>
               </form>";

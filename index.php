@@ -75,18 +75,21 @@ require VIEWS.'/home.php';
       }
 
       //edit article not finished
-      if(isset($_GET['edit'])){
+      if(isset($_GET['edit_view'])){
         require VIEWS.'/editarticle.php';
-        $article_id=$_GET['article_id'];
-        $query = "UPDATE FROM article WHERE article_id='$article_id'";
+
       }
 
+      if(isset($_POST['update_article'])){
+
+      }
+
+
+      //delete article by callling function in model.php
         if(isset($_POST['delete'])){
           $article_id=$_POST['article_id'];
           delete_article($article_id);
         }
-
-
 
       //This for when you press submit in new user
       if(isset($_POST['signup'])){

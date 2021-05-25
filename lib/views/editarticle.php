@@ -1,28 +1,26 @@
   <form action='index.php' method='POST'>
-    <input type='hidden' name='submitarticle' value='submit article'>
+    <!--<input type='hidden' name='edit_view' value='edit article'>-->
+    <input type='hidden' name='update_article' value='submit article'>
+    <input type='hidden' name='article_id' value=''>
     <?php
+
+    $article_id=$_GET['article_id'];
+    $query = "SELECT * FROM article WHERE article_id='$article_id'";
+    $run = mysqli_query($db,$query) or die(mysqli_error());
+    $result = mysqli_fetch_array($run);
+
+
       require PARTIALS."/form.title.php";
       echo "<br>";
       require PARTIALS."/form.content.php";
       echo "<br>";
     ?>
-  <!--TO SELECT WHICH USER WHO WROTE THE ARTICLE FOR NOW?-->
-    <label for="pickuser_id">Author:</label>
-    <select name='user_id'>
-  <?php
-    $sql="SELECT user_id, firstname, lastname from users";
-    $result=$db->query($sql);
 
-    if(!empty($result)){
-      foreach($result as $result){
-      echo "<option value='{$result['user_id']}'>{$result['firstname']} {$result['lastname']}</option>";
-    }
-  }
-  else{
-    echo "it did not work";
-  }
-  ?>
+
+
   </select>
 
-  <input type='submit' value='Post Article'>
+
+
+  <input type='submit' value='Update Article'>
   </form>
