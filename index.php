@@ -77,16 +77,13 @@ DEFINE ("APP",LIB."/application.php");
       //edit article not finished
       if(isset($_GET['edit_view'])){
         require VIEWS.'/editarticle.php';
-        //this is so that when you are trying to create an article, it will not show an error
-        //cause its trying to find values
-        $_SESSION['edit_view'] = true;
       }
 
       if(isset($_POST['update_article'])){
         if(!empty($_POST['title']) && !empty($_POST['content'])){
           $title = $_POST['title'];
           $content = $_POST['content'];
-
+          $query = "INSERT INTO article (title, content) VALUES ('$title','$content')" ;
         }
       }
 

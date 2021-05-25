@@ -9,6 +9,8 @@
     $query = "SELECT * FROM article WHERE article_id='$article_id'";
     $run = mysqli_query($db,$query) or die(mysqli_error());
     $result = mysqli_fetch_array($run);
+    //so that i can make it a global variable.
+    $all_articles = $result;
 
     //forms from partials
       require PARTIALS."/form.title.php";
