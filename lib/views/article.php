@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8' />
-  <title>what to do with article</title>
-</head>
-
-<body>
 <?php
 if(isset($_SESSION['username'])){
   echo "<h1>Welcome ".$_SESSION['username'].", to Article Website!</h1>";
@@ -13,10 +5,8 @@ if(isset($_SESSION['username'])){
 else{
   echo "<h1>Welcome to Article Website!</h1>";
 }
-
 echo "<hr>";
 ?>
-
 
 <?php
 //WILL SHOW ALL ARTICLES IN DATABASE
@@ -35,9 +25,16 @@ if(!empty($result)){
              //Only someone who is logged in will be able to delete articles
              if(isset($_SESSION['loggedin'])){
                //To edit article
-              echo "<a href='?edit={$item['article_id']}'>edit </a>";
+              echo "<form action='index.php' method='GET'>
+                <input type='hidden' name='edit' value='edit article'/>
+                <input type='hidden' name='article_id' value={$item['article_id']}/>
+                <input type='submit' value='edit'/>
+              </form>";
+
+
+              //This is to delete article which will send to index php and go to: if(isset($_POST['delete'])){
               echo "<form action='index.php' method='POST'>
-                <input type='hidden' name='delete' value='delete_article'/>
+                <input type='hidden' name='delete' value='delete article'/>
                 <input type='hidden' name='article_id' value={$item['article_id']}/>
                 <input type='submit' value='delete'/>
               </form>";
@@ -52,7 +49,3 @@ if(!empty($result)){
           }
 
   ?>
-
-
-</body>
-</html>

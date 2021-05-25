@@ -26,6 +26,10 @@ if(count($errors) > 0){
    echo "</ul>";
 }
 
+function edit_article($title, $content){
+
+}
+
 function delete_article($article_id){
   global $db;
   $query = "DELETE FROM article WHERE article_id='$article_id'";

@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8' />
-  <title>signup</title>
-</head>
-
-<body>
 <h3>Sign up!</h3>
 <form action='index.php' method='POST'>
   <input type='hidden' name='signup' value='signup'>
@@ -21,6 +13,3 @@
   ?>
 <input type='submit' value='Sign up!'>
 </form>
-
-</body>
-</html>

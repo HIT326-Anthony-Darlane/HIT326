@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8' />
-  <title>signup</title>
-</head>
-
-<body>
 <h3>Sign in</h3>
 <form action='index.php' method='POST'>
   <input type='hidden' name='signin' value='signin'>
@@ -14,11 +6,6 @@
   echo "<br>";
   require PARTIALS."/form.password.php";
   ?>
-  <!--placeholder-->
-
 
 <input type='submit' value='Sign in'>
 </form>
-
-</body>
-</html>

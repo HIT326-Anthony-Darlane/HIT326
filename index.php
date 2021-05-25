@@ -74,13 +74,12 @@ require VIEWS.'/home.php';
         }
       }
 
-      //edit article
+      //edit article not finished
       if(isset($_GET['edit'])){
-        require VIEWS.'/newarticle.php';
-        $article_id=$_GET['edit'];
+        require VIEWS.'/editarticle.php';
+        $article_id=$_GET['article_id'];
         $query = "UPDATE FROM article WHERE article_id='$article_id'";
       }
-
 
         if(isset($_POST['delete'])){
           $article_id=$_POST['article_id'];
@@ -156,5 +155,5 @@ require VIEWS.'/home.php';
             exit();
           }
         }
-
+require VIEWS.'/footer.php';
 ?>

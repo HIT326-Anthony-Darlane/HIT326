@@ -1,6 +1,3 @@
-<h3>make new article here</h3>
-
-<body>
   <form action='index.php' method='POST'>
     <input type='hidden' name='submitarticle' value='submit article'>
     <?php

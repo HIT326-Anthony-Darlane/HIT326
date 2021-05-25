@@ -19,12 +19,6 @@ else{
   echo "<a href='?signin'>Signin</a> ";
   echo "<a href='?signup'>Signup</a>";
 }
-
 ?>
 
 <hr>
-
-
-
-</body>
-</html>
