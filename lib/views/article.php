@@ -28,11 +28,10 @@ if(!empty($result)){
              if(!empty($run2)){
                while($tag=mysqli_fetch_array($run2)){
                  echo "<p>{$tag['tag']},</p>";
+
                }
              }
-             else{
-               echo "well this is sad echo".$item['article_id']." yikes";
-             }
+
 
 
 
@@ -41,15 +40,14 @@ if(!empty($result)){
                //To edit article
               echo "<form action='index.php' method='GET'>
                 <input type='hidden' name='edit_view' value='edit article'/>
-                <input type='hidden' name='article_id' value={$item['article_id']}/>
+                <input type='hidden' name='article_id' value={$item['article_id']}>
                 <input type='submit' value='edit'/>
               </form>";
-
 
               //This is to delete article which will send to index php and go to: if(isset($_POST['delete'])){
               echo "<form action='index.php' method='POST'>
                 <input type='hidden' name='delete' value='delete article'/>
-                <input type='hidden' name='article_id' value={$item['article_id']}/>
+                <input type='hidden' name='article_id' value={$item['article_id']}>
                 <input type='submit' value='delete'/>
               </form>";
 
