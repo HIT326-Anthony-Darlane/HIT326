@@ -53,21 +53,31 @@ DEFINE ("APP",LIB."/application.php");
       if(isset($_POST['submitarticle'])){
         //if the _POST's input title and content are not empty, say it worked else fuk
         if(!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['user_id']) && !empty($_POST['taglist'])){
+          $article_id=uniqid();
           $title = $_POST['title'];
           $content = $_POST['content'];
           $user_id = $_POST['user_id'];
+          //add these new tags to database
           $tags = $_POST['taglist'];
-
           $tags_list = array();
           $tags_list = explode(",", $tags);
+
+
+          //so that it can insert into database, dont know how specifically but it works
+          $query = "INSERT INTO article (article_id,title, content,user_id) VALUES ('$article_id','$title','$content','$user_id')" ;
+          $run = mysqli_query($db,$query) or die(mysqli_error());
+
           foreach($tags_list as $item){
             $item = trim($item);
-            $tagquery = "INSERT INTO tag (tag) VALUES ('$item')" ;
-            $run = mysqli_query($db,$tagquery) or die(mysqli_error());
+            $tag_id=uniqid();
+            $tagquery = "INSERT INTO tag (tag_id,tag) VALUES ('$tag_id','$item')";
+            $run2 = mysqli_query($db,$tagquery) or die(mysqli_error());
+            $taggingquery="INSERT INTO tagging (article_id,tag_id) VALUES ('$article_id','$tag_id')";
+            $run3 = mysqli_query($db,$taggingquery) or die(mysqli_error());
           }
-          //so that it can insert into database, dont know how specifically but it works
-          $query = "INSERT INTO article (title, content,user_id) VALUES ('$title','$content','$user_id')" ;
-          $run = mysqli_query($db,$query) or die(mysqli_error());
+
+
+
           //when you press submit, it will show this message
           if($run){
             header('location:index.php?articles');

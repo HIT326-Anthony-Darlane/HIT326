@@ -3,6 +3,7 @@
 <body>
   <form action='index.php' method='POST'>
     <input type='hidden' name='submitarticle' value='submit article'>
+    <input type='hidden' name='article_id' value=''>
     <?php
       require PARTIALS."/form.title.php";
       echo "<br>";
