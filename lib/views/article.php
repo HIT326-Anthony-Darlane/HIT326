@@ -9,6 +9,7 @@ echo "<hr>";
 
 //WILL SHOW ALL ARTICLES IN DATABASE
 //find what we looking for in sql and will order it by descending order aka. newest first
+$db=get_db();
 $sql= "SELECT * FROM article i, users ii where i.user_id=ii.user_id order by created_date desc";
 $result = $db->query($sql);
 

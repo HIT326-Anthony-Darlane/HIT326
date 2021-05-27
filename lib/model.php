@@ -1,30 +1,33 @@
 <?php
-//GETS DATABASE
-$db = null;
-$errors= array();
+function get_db(){
+  //GETS DATABASE
+  $db = null;
+  $errors= array();
+  try{
+    $server='localhost';
+    $username='root';
+    $password='hit326';
+    $dbname='article_db';
 
-try{
-  $server='localhost';
-  $username='root';
-  $password='hit326';
-  $dbname='article_db';
+    $db=mysqli_connect($server,$username,$password,$dbname);
+  }
+  //catch code will run if above aint right pre much acts as the 'else' statement to your if
+  //copied it too
+  catch(PDOException $e){
+    $errors[]=$e->getMessage();
+  }
+  //finds out what error it is
+  if(count($errors) > 0){
+     echo "<p>The connection did not work</p>";
+     echo "<ul>";
+     foreach($errors As $error){
+        echo "<li>{$error}</li>";
+     }
+     echo "</ul>";
+  }
+  return $db;
+}
 
-  $db=mysqli_connect($server,$username,$password,$dbname);
-}
-//catch code will run if above aint right pre much acts as the 'else' statement to your if
-//copied it too
-catch(PDOException $e){
-  $errors[]=$e->getMessage();
-}
-//finds out what error it is
-if(count($errors) > 0){
-   echo "<p>The connection did not work</p>";
-   echo "<ul>";
-   foreach($errors As $error){
-      echo "<li>{$error}</li>";
-   }
-   echo "</ul>";
-}
 
 //if user didnt fill in  every input
 function else_empty(){
@@ -33,7 +36,7 @@ function else_empty(){
 };
 
 function signin($username,$password){
-  global $db;
+  $db=get_db();
   $query = "SELECT * FROM users WHERE username = '$username'";
   $run = mysqli_query($db,$query);
   $row = mysqli_fetch_array($run, MYSQLI_ASSOC);
@@ -66,7 +69,7 @@ else {
 }
 
 function signup($username,$firstname,$lastname,$password){
-  global $db;
+  $db=get_db();
   //This is to find if the username already exists
   $query="SELECT username FROM users WHERE username='$username'";
   $run=mysqli_query($db,$query);
@@ -94,7 +97,7 @@ function signup($username,$firstname,$lastname,$password){
 }
 
 function submit_article($article_id,$title,$content,$user_id,$tags,$tags_list){
-  global $db;
+  $db=get_db();
   //so that it can insert into database, dont know how specifically but it works
   $query = "INSERT INTO article (article_id,title, content,user_id) VALUES ('$article_id','$title','$content','$user_id')" ;
   $run = mysqli_query($db,$query) or die(mysqli_error());
@@ -117,7 +120,7 @@ function submit_article($article_id,$title,$content,$user_id,$tags,$tags_list){
 }
 
 function update_article($article_id,$title, $content){
-  global $db;
+  $db=get_db();
   $query = "UPDATE article SET title='$title', content='$content' WHERE article_id='$article_id'" ;
   $run = mysqli_query($db,$query) or die(mysqli_error());
   if($run){
@@ -130,7 +133,7 @@ function update_article($article_id,$title, $content){
 }
 
 function delete_article($article_id){
-  global $db;
+  $db=get_db();
   $query = "DELETE FROM article WHERE article_id='$article_id'";
   $run = mysqli_query($db,$query) or die(mysqli_error());
   if($run){

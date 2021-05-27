@@ -81,6 +81,9 @@ DEFINE ("APP",LIB."/application.php");
           $content = $_POST['content'];
           update_article($article_id,$title,$content);
         }
+        else{
+          else_empty();
+        }
       }
 
 
