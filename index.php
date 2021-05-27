@@ -52,11 +52,11 @@ DEFINE ("APP",LIB."/application.php");
       //will find the input name
       if(isset($_POST['submitarticle'])){
         //if the _POST's input title and content are not empty, say it worked else fuk
-        if(!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['user_id']) && !empty($_POST['taglist'])){
+        if(!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['taglist'])){
           $article_id=uniqid();
           $title = $_POST['title'];
           $content = $_POST['content'];
-          $user_id = $_POST['user_id'];
+          $user_id = $_SESSION['user_id'];
           //add these new tags to database
           $tags = $_POST['taglist'];
           $tags_list = array();
@@ -158,6 +158,7 @@ DEFINE ("APP",LIB."/application.php");
           $query = "SELECT * FROM users WHERE username = '$username'";
           $run = mysqli_query($db,$query);
           $row = mysqli_fetch_array($run, MYSQLI_ASSOC);
+          $user_id = $row['user_id'];
           $count = mysqli_num_rows($run);
           //will find the 1 username in database, else will say invalid username
           if($count == 1){
@@ -169,6 +170,7 @@ DEFINE ("APP",LIB."/application.php");
             //verify password
             if(password_verify($password, $hash)){
               //if password is the same, will say this
+              $_SESSION['user_id']= $user_id;
               $_SESSION['username'] = $username;
               $_SESSION['loggedin'] = true;
               header('location:index.php?articles');

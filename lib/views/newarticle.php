@@ -11,23 +11,7 @@
       echo "<br>";
       require PARTIALS."/form.tags.php";
     ?>
-  <!--TO SELECT WHICH USER WHO WROTE THE ARTICLE FOR NOW?-->
-    <label for="pickuser_id">Author:</label>
-    <select name='user_id'>
-  <?php
 
-    $sql="SELECT user_id, firstname, lastname from users";
-    $result=$db->query($sql);
-
-    if(!empty($result)){
-      foreach($result as $result){
-      echo "<option value='{$result['user_id']}'>{$result['firstname']} {$result['lastname']}</option>";
-    }
-  }
-  else{
-    echo "it did not work";
-  }
-  ?>
   </select>
 
   <input type='submit' value='Post Article'>
