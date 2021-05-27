@@ -67,17 +67,29 @@ else {
 
 function signup($username,$firstname,$lastname,$password){
   global $db;
-  //Salting password for security//
-  $hashed_password = password_hash($password,PASSWORD_DEFAULT);
-  //so that it can insert into database, dont know how specifically but it works
-  $query = "INSERT INTO users (username, firstname, lastname,password) VALUES ('$username','$firstname','$lastname','$hashed_password')" ;
-  $run = mysqli_query($db,$query) or die(mysqli_error());
-  //when you press submit, it will show this message if successful
-  if($run){
-    echo "Added new user";
+  //This is to find if the username already exists
+  $query="SELECT username FROM users WHERE username='$username'";
+  $run=mysqli_query($db,$query);
+  $row = mysqli_fetch_array($run,MYSQLI_ASSOC);
+  $count = mysqli_num_rows($run);
+  //if the username is found in the database, will output message that it already exists
+  if($count == 1){
+    echo "This username already exists!";
   }
+  //if it doesn't exist in the database, it will insert into database
   else{
-    echo "There was a problem making this user";
+    //Salting password for security//
+    $hashed_password = password_hash($password,PASSWORD_DEFAULT);
+    //so that it can insert into database, dont know how specifically but it works
+    $query = "INSERT INTO users (username, firstname, lastname,password) VALUES ('$username','$firstname','$lastname','$hashed_password')" ;
+    $run = mysqli_query($db,$query) or die(mysqli_error());
+    //when you press submit, it will show this message if successful
+    if($run){
+      echo "<p>Added new user!</p>";
+    }
+    else{
+      echo "<p>There was a problem making this user</p>";
+    }
   }
 }
 
@@ -129,9 +141,5 @@ function delete_article($article_id){
     echo "There was a problem trying to delete this article";
   }
 }
-
-
-
-
 
  ?>
