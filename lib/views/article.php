@@ -1,11 +1,15 @@
 <?php
+echo "<div class = 'container text-center'>";
 if(isset($_SESSION['username'])){
-  echo "<h1>Welcome ".$_SESSION['username'].", to Article Website!</h1>";
+  echo "<h4 class='lead'>Welcome ".$_SESSION['username'].", to Austro-Asian Times!</h3>";
 }
 else{
-  echo "<h1>Welcome to Article Website!</h1>";
+  echo "<h4 class='lead'>Austro-Asian Times</h3>";
 }
+echo "</div>";
 echo "<hr>";
+//container div
+echo "<div class='container'>";
 
 //WILL SHOW ALL ARTICLES IN DATABASE
 //find what we looking for in sql and will order it by descending order aka. newest first
@@ -57,5 +61,7 @@ if(!empty($result)){
          else{
            echo "<p>No results</p>";
           }
+        //ends container div
+        echo "</div>";
       include VIEWS.'/footer.php';
   ?>
