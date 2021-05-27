@@ -8,17 +8,20 @@ DEFINE ("PARTIALS",VIEWS."/partials");
 DEFINE ("MODEL",LIB."/model.php");
 DEFINE ("APP",LIB."/application.php");
 
+DEFINE("LAYOUT","home");
+
 //connecting to model so that it is always conneected to the database
   include MODEL;
   include APP;
 
 //will call the home page from the top which is just the header? it will rremain on all pages
   session_start();
-  require VIEWS.'/home.php';
+  require VIEWS.'/home.layout.php';
 
 
 //when the link is pressed it will come here and do this
       if(isset($_GET['articles'])){
+        
         require VIEWS.'/article.php';
         exit();
       }

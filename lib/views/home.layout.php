@@ -22,10 +22,3 @@ else{
 ?>
 
 <hr>
-
-<div class="content">
-<?php
-
-?>
-
-</div>
