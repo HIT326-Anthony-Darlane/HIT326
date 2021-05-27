@@ -9,3 +9,4 @@
 
 <input type='submit' value='Sign in'>
 </form>
+<?php include VIEWS.'/footer.php'?>

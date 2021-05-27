@@ -13,3 +13,4 @@
   ?>
 <input type='submit' value='Sign up!'>
 </form>
+<?php include VIEWS.'/footer.php'?>

@@ -15,3 +15,4 @@
 
   <input type='submit' value='Post Article'>
   </form>
+<?php include VIEWS.'/footer.php'?>

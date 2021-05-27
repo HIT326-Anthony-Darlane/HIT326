@@ -31,7 +31,6 @@ if(!empty($result)){
                  echo "{$tag['tag']}, ";
                }
              }
-             //end of trying to find tags
              echo "</p>";
 
              //Only someone who is logged in will be able to delete articles
@@ -58,5 +57,5 @@ if(!empty($result)){
          else{
            echo "<p>No results</p>";
           }
-
+      include VIEWS.'/footer.php';
   ?>

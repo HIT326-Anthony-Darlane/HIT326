@@ -18,8 +18,5 @@
     ?>
 
   </select>
-
-
-
   <input type='submit' value='Update Article'>
   </form>
