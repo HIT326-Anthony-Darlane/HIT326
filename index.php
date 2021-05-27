@@ -62,7 +62,6 @@ DEFINE ("APP",LIB."/application.php");
           $tags_list = array();
           $tags_list = explode(",", $tags);
 
-
           //so that it can insert into database, dont know how specifically but it works
           $query = "INSERT INTO article (article_id,title, content,user_id) VALUES ('$article_id','$title','$content','$user_id')" ;
           $run = mysqli_query($db,$query) or die(mysqli_error());
@@ -71,13 +70,10 @@ DEFINE ("APP",LIB."/application.php");
             $item = trim($item);
             $tag_id=uniqid();
             $tagquery = "INSERT INTO tag (tag_id,tag) VALUES ('$tag_id','$item')";
-            $run2 = mysqli_query($db,$tagquery) or die(mysqli_error());
+            $run = mysqli_query($db,$tagquery) or die(mysqli_error());
             $taggingquery="INSERT INTO tagging (article_id,tag_id) VALUES ('$article_id','$tag_id')";
-            $run3 = mysqli_query($db,$taggingquery) or die(mysqli_error());
+            $run = mysqli_query($db,$taggingquery) or die(mysqli_error());
           }
-
-
-
           //when you press submit, it will show this message
           if($run){
             header('location:index.php?articles');
@@ -88,8 +84,7 @@ DEFINE ("APP",LIB."/application.php");
         }
         //when you press submit but you didn't fill in the inputs :|
         else{
-          header('location:index.php?emptyinput');
-          exit();
+          else_empty();
         }
       }
 
@@ -145,8 +140,7 @@ DEFINE ("APP",LIB."/application.php");
         }
         //when you press submit but you didn't fill in the inputs :|
         else{
-          header('location:index.php?emptyinput');
-          exit();
+          else_empty();
         }
       }
 
@@ -186,9 +180,7 @@ DEFINE ("APP",LIB."/application.php");
       }
     }
           else{
-            //will go to emptyinput thing above and say you didn't fill in everything
-            header('location:index.php?emptyinput');
-            exit();
+            else_empty();
           }
         }
 require VIEWS.'/footer.php';

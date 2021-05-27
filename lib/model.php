@@ -25,6 +25,11 @@ if(count($errors) > 0){
    }
    echo "</ul>";
 }
+//if user didnt fill in  every input
+function else_empty(){
+  header('location:index.php?emptyinput');
+  exit();
+};
 
 function edit_article($title, $content){
 

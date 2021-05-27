@@ -6,9 +6,7 @@ else{
   echo "<h1>Welcome to Article Website!</h1>";
 }
 echo "<hr>";
-?>
 
-<?php
 //WILL SHOW ALL ARTICLES IN DATABASE
 //find what we looking for in sql and will order it by descending order aka. newest first
 $sql= "SELECT * FROM article i, users ii where i.user_id=ii.user_id order by created_date desc";
@@ -32,10 +30,7 @@ if(!empty($result)){
                  echo "{$tag['tag']}, ";
                }
              }
-
-
              //end of trying to find tags
-
              echo "</p>";
 
              //Only someone who is logged in will be able to delete articles
