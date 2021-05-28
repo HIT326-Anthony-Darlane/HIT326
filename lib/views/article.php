@@ -1,16 +1,21 @@
 <?php
-echo "<div class = 'container text-center'>";
+echo "<div class = 'container text-center'>
+<div class='p-3'>";
 if(isset($_SESSION['username'])){
-  echo "<h4 class='lead'>Welcome ".$_SESSION['username'].", to Austro-Asian Times!</h3>";
+  echo "<h4 class='lead'>Welcome back ".$_SESSION['username'].", to Austro-Asian Times!</h3>";
 }
 else{
-  echo "<h4 class='lead'>Austro-Asian Times</h3>";
+  echo "<h4 class='lead'>Welcome to Austro-Asian Times</h3>";
 }
-echo "</div>";
-echo "<hr>";
+echo "
+</div>
+</div>
+<br>";
+
 //container div
 echo "<div class='container'>";
-
+//div to add padding
+echo "<div class='p-3'>";
 //WILL SHOW ALL ARTICLES IN DATABASE
 //find what we looking for in sql and will order it by descending order aka. newest first
 $db=get_db();
@@ -22,9 +27,8 @@ if(!empty($result)){
            while($item = mysqli_fetch_array($result)){
              echo
              "<h2>{$item['title']}</h2>
-             <p>{$item['content']}</p>
-             <p>Written by: {$item['username']}</p>
-             <p>Published: {$item['created_date']}</p>
+             <p class='text-justify'>{$item['content']}</p>
+             <div class=''>
              <p>Tags:";
 
              //to find all the tags linked to this article
@@ -34,9 +38,13 @@ if(!empty($result)){
                while($tag=mysqli_fetch_array($run2)){
                  echo "{$tag['tag']}, ";
                }
+               echo
+               "</p>
+              <small>Written by: {$item['username']}</small>
+              <br>
+              <small>Published: {$item['created_date']}</small>
+              </div>";
              }
-             echo "</p>";
-
              //Only someone who is logged in will be able to delete articles
              if(isset($_SESSION['loggedin'])){
                //To edit article
@@ -54,14 +62,15 @@ if(!empty($result)){
               </form>";
 
               }
-              echo "<hr>";
              }
            }
           //if there is nothing in the database
          else{
            echo "<p>No results</p>";
           }
-        //ends container div
+          //ends the padding div
+          echo "</div>";
+          //ends container div
         echo "</div>";
       include VIEWS.'/footer.php';
   ?>

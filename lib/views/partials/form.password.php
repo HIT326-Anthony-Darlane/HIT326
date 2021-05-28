@@ -1,2 +1,2 @@
-<label for='uPassword'>password</label>
+<label for='uPassword'>Password:</label>
 <input type='password' name='password'/>

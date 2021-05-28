@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-center">
   <form action='index.php' method='POST'>
     <input type='hidden' name='update_article' value='submit article'>
     <input type='hidden' name='article_id' value='<?php echo $article_id=$_GET['article_id'] ?>'>

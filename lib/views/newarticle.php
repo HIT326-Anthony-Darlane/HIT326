@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-center">
     <form action='index.php' method='POST'>
       <input type='hidden' name='submitarticle' value='Submit Article'>
       <?php
@@ -8,9 +8,7 @@
         echo "<br>";
         require PARTIALS."/form.tags.php";
       ?>
-
-    </select>
-
+      <br>
     <input type='submit' value='Post Article'>
     </form>
   <?php include VIEWS.'/footer.php'?>

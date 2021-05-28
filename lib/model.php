@@ -77,7 +77,12 @@ function signup($username,$firstname,$lastname,$password){
   $count = mysqli_num_rows($run);
   //if the username is found in the database, will output message that it already exists
   if($count == 1){
-    echo "This username already exists!";
+    echo "
+    <div class='container text-center'>
+    <p>uh oh!</p>
+    <p>This username already exists!</p>
+    </div>
+    ";
   }
   //if it doesn't exist in the database, it will insert into database
   else{
@@ -88,7 +93,12 @@ function signup($username,$firstname,$lastname,$password){
     $run = mysqli_query($db,$query) or die(mysqli_error());
     //when you press submit, it will show this message if successful
     if($run){
-      echo "<p>Added new user!</p>";
+      echo "
+      <div class='container text-center'>
+      <p>Added new user!</p>
+      <p>You can now sign in!</p>
+      </div>
+      ";
     }
     else{
       echo "<p>There was a problem making this user</p>";

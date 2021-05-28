@@ -1,3 +1,16 @@
 body{
-  font-family: 'ZCOOL KuaiLe', cursive;
+  background-color: #e0e0e0;
+}
+.container, .container-fluid{
+  background-color: white;
+}
+.p-2{
+  padding:20px;
+}
+.p-3{
+  padding:30px;
+}
+
+.text-justify{
+  text-align: justify;
 }

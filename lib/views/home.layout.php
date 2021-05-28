@@ -3,32 +3,34 @@
 <html>
 <head>
   <meta charset='utf-8'/>
-  <title>article</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <title>Austro-Asian Times</title>
+  <!--put echo time() because css would not load properly cause of cache?-->
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css?v=<?php echo time();?>">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css?v=<?php echo time();?>">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css?v=<?php echo time();?>">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css?v=<?php echo time();?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css?v=<?php echo time();?>">
 
 <body>
 <section>
-  <div class="container text-center">
-    <h1>AUSTRO-ASIAN TIMES</h1>
-    <p class="lead">News for Northern Australia and Southeast Asia</p>
-    <a href='?articles'>Home(lists all articles)</a>
-    <?php
-    if(isset($_SESSION['loggedin'])){
-      echo "<a href='?newarticle'>New Article</a> ";
-      echo "<a href='?logout'>Log Out</a>";
-    }
-    else{
-      echo "<a href='?signin'>Signin</a> ";
-      echo "<a href='?signup'>Signup</a>";
-    }
-    ?>
+  <div class="container-fluid text-center">
+    <div class="p-2">
+      <h1>AUSTRO-ASIAN TIMES</h1>
+      <p class="lead">News for Northern Australia and Southeast Asia</p>
+      <a href='?articles'>Home</a>
+        <?php
+          if(isset($_SESSION['loggedin'])){
+            echo "<a href='?newarticle'>New Article</a> ";
+            echo "<a href='?logout'>Log Out</a>";
+          }
+          else{
+            echo "<a href='?signin'>Signin</a> ";
+            echo "<a href='?signup'>Signup</a>";
+          }
+        ?>
+  </div>
 </div>
 </section>
-<hr>
+<br>

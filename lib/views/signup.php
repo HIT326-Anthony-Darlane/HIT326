@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-center">
   <h3>Sign up!</h3>
   <form action='index.php' method='POST'>
     <input type='hidden' name='signup' value='signup'>
@@ -13,6 +13,6 @@
       echo "<br>";
       ?>
       <input type='submit' value='Sign up!'>
-  </form>
+    </form>
+  </div>
   <?php include VIEWS.'/footer.php'?>
-</div>
