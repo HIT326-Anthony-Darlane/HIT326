@@ -33,7 +33,9 @@ function signin($username,$password){
   $query = "SELECT * FROM users WHERE username = '$username'";
   $run = mysqli_query($db,$query);
   $row = mysqli_fetch_array($run, MYSQLI_ASSOC);
+
   $user_id = $row['user_id'];
+
   $count = mysqli_num_rows($run);
   //will find the 1 username in database, else will say invalid username
   if($count == 1){
@@ -63,6 +65,8 @@ else {
 
 function signup($username,$firstname,$lastname,$password){
   $db=get_db();
+  $number = preg_match('@[0-9]@',$password);
+  $uppercase = preg_match('@[A-Z]@', $password);
   //This is to find if the username already exists
   $query="SELECT username FROM users WHERE username='$username'";
   $run=mysqli_query($db,$query);
@@ -72,7 +76,15 @@ function signup($username,$firstname,$lastname,$password){
   if($count == 1){
     err_message("Uh Oh!","This name already exists. Please Try again");
   }
-  //if it doesn't exist in the database, it will insert into database
+  //username must be not be less than 4 letters
+  elseif(strlen($username) < 4){
+    err_message("","Username must be more than 4 letters!");
+  }
+  //password must be not be less than 4 letters, and must include captial letter and a number
+  elseif(strlen($password) < 4 || !$number || !$uppercase){
+    err_message("","Password must contain at least 4 letters with at least 1 number and 1 upper case letter");
+  }
+  //if all passes above, it will proceed
   else{
     //Salting password for security//
     $hashed_password = password_hash($password,PASSWORD_DEFAULT);
