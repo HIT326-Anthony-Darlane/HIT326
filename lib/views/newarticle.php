@@ -9,7 +9,7 @@
         require PARTIALS."/form.tags.php";
       ?>
       <br>
-    <input type='submit' value='Post Article'>
+    <input type='submit' class='button-blue' value='Post Article'>
     </form>
   </div>
 <?php include VIEWS.'/footer.php'?>

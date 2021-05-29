@@ -12,7 +12,7 @@
       require PARTIALS.'/form.password.php';
       echo "<br>";
       ?>
-      <input class='btn' type='submit' value='Sign up!'>
+      <input class='button-blue' type='submit' value='Sign up!'>
     </form>
   </div>
   <?php include VIEWS.'/footer.php'?>

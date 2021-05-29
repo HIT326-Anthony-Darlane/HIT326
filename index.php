@@ -46,15 +46,9 @@ DEFINE("LAYOUT","home");
       }
       //if user did not fill in all inputs, they will be redirected here. you can see more below.
       if(isset($_GET['emptyinput'])){
-        echo "<div class='container-fluid text-center p-3'>
-            <h3>Uh Oh!</h3>
-            <h4>You must've forgotten to fill something in :(</h4>
-          </div>";
+        err_message("Uh Oh!", "You must've forgotten to fill something in :(");
       }
 
-      if(isset($_GET['articles'])){
-
-      }
 
       //this part for adding the new article
       //if the _POST's submit button was called

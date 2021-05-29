@@ -4,14 +4,33 @@ body{
   font-size: 16px;
 }
 
+hr{
+  margin:0px;
+  background-color: #fff;
+	border-top: 2px dashed #8c8b8b;
+}
+
 .container, .container-fluid{
   background-color: white;
+}
+.container{
+
 }
 .p-2{
   padding:20px;
 }
 .p-3{
   padding:30px;
+}
+.lead{
+  margin:0px;
+}
+
+.font-18{
+  font-size: 18px;
+}
+.font-15{
+  font-size: 15px;
 }
 
 .text-justify{
@@ -25,4 +44,33 @@ body{
 }
 .text-capitalize{
   text-transform: capitalize;
+}
+.tags{
+
+}
+
+.form-container{
+
+  margin:10px 0 10px 0;
+}
+.form-left,.form-right{
+  display:inline-block;
+}
+.button-white,.button-blue{
+  padding:8px 25px;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  border: 1px solid #D3D3D3;
+  border-radius: 5px;
+}
+.button-white{
+  color:black;
+  background-color: white;
+
+
+}
+.button-blue{
+  color:white;
+  background-color: #4682B4;
 }

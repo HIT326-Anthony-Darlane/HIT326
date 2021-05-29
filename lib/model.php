@@ -18,7 +18,7 @@ function get_db(){
   }
   //finds out what error it is
   if(count($errors) > 0){
-     echo "<p>The connection did not work</p>";
+     err_message("There was a problem connnecting with the database","");
      echo "<ul>";
      foreach($errors As $error){
         echo "<li>{$error}</li>";
@@ -27,13 +27,6 @@ function get_db(){
   }
   return $db;
 }
-
-
-//if user didnt fill in  every input
-function else_empty(){
-  header('location:index.php?emptyinput');
-  exit();
-};
 
 function signin($username,$password){
   $db=get_db();
@@ -59,18 +52,12 @@ function signin($username,$password){
     }
     else{
   //if password wrong, will say this
-  echo "
-  <div class='container-fluid text-center p-3'>
-  <p>Entered wrong password!</p>
-  </div>";
+  err_message("Entered Wrong Password!","");
   }
 }
 else {
   //if username is not in datase
-  echo "
-  <div class='container-fluid text-center p-3'>
-  <p>Invalid Username</p>
-  </div>";
+  err_message("Invalid Username","");
   }
 }
 
@@ -83,12 +70,7 @@ function signup($username,$firstname,$lastname,$password){
   $count = mysqli_num_rows($run);
   //if the username is found in the database, will output message that it already exists
   if($count == 1){
-    echo "
-    <div class='container-fluid text-center p-3'>
-    <p>uh oh!</p>
-    <p>This username already exists!</p>
-    </div>
-    ";
+    err_message("Uh Oh!","This name already exists. Please Try again");
   }
   //if it doesn't exist in the database, it will insert into database
   else{
@@ -99,17 +81,10 @@ function signup($username,$firstname,$lastname,$password){
     $run = mysqli_query($db,$query) or die(mysqli_error());
     //when you press submit, it will show this message if successful
     if($run){
-      echo "
-      <div class='container-fluid text-center p-3'>
-      <p>Added new user!</p>
-      <p>You can now sign in!</p>
-      </div>
-      ";
+      err_message("Added new user!","You can now sign in!");
     }
     else{
-      echo "<div class='container-fluid text-center p-3'>
-      <p>There was a problem making this user</p>
-      </div";
+      err_message("There was a problem making this user!","");
     }
   }
 }
@@ -131,9 +106,10 @@ function submit_article($article_id,$title,$content,$user_id,$tags,$tags_list){
   //when you press submit, it will show this message
   if($run){
     header('location:index.php?articles');
+    exit();
   }
   else{
-    echo "couldn't add new article";
+    err_message("Could not add new article","");
   }
 }
 
@@ -146,7 +122,7 @@ function update_article($article_id,$title, $content){
     exit();
   }
   else{
-    echo "There was a problem trying to delete this article";
+    err_message("There was a problem trying to update this article","");
   }
 }
 
@@ -159,7 +135,7 @@ function delete_article($article_id){
     exit();
   }
   else{
-    echo "There was a problem trying to delete this article";
+    err_message("There was a problem trying to delete this article","");
   }
 }
 

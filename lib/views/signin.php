@@ -8,7 +8,7 @@
       require PARTIALS."/form.password.php";
       ?>
       <br>
-      <input class='btn' type='submit' value='Sign in' >
+      <input class='button-blue' type='submit' value='Sign in' >
     </form>
 </div>
 <?php include VIEWS.'/footer.php'?>

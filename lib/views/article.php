@@ -1,22 +1,8 @@
 <?php
-echo "<div class = 'container-fluid text-center'>
-<div class='p-3'>";
-if(isset($_SESSION['username'])){
-  echo "<h4 class='lead'>Welcome back ".$_SESSION['username'].", to Austro-Asian Times!</h3>";
-}
-else{
-  echo "<h4 class='lead'>Welcome to Austro-Asian Times</h3>";
-}
-echo "
-</div>
-</div>
-<br>";
 
 //container div
 echo "<div class='container-fluid'>";
-echo "<div class='container p-3'>";
-//div to add padding
-
+echo "<hr>";
 
 //WILL SHOW ALL ARTICLES IN DATABASE
 //find what we looking for in sql and will order it by descending order aka. newest first
@@ -28,9 +14,9 @@ if(!empty($result)){
          //Loop getting each name
            while($item = mysqli_fetch_array($result)){
              echo
-             "<h2 class='text-capitalize'>{$item['title']}</h2>
+             "<div class='container p-2'>
+             <h2 class='text-capitalize'>{$item['title']}</h2>
              <p class='text-justify'>{$item['content']}</p>
-             <div class=''>
              <p>Tags:";
 
              //to find all the tags linked to this article
@@ -38,42 +24,48 @@ if(!empty($result)){
              $run2= $db->query($sqltag);
              if(!empty($run2)){
                while($tag=mysqli_fetch_array($run2)){
-                 echo "{$tag['tag']}, ";
+                 echo "<span class='tags'> {$tag['tag']}, </span>";
                }
                echo
                "</p>
               <small>Written by: {$item['username']}</small>
               <br>
-              <small>Published: {$item['created_date']}</small>
-              </div>";
+              <small>Published: {$item['created_date']}</small>";
              }
              //Only someone who is logged in will be able to delete articles
              if(isset($_SESSION['loggedin'])){
                //To edit article
-              echo "<form action='index.php' method='GET'>
-                <input type='hidden' name='edit_view' value='edit article'/>
-                <input type='hidden' name='article_id' value={$item['article_id']}>
-                <input class='btn' type='submit' value='edit'/>
-              </form>";
-              //This is to delete article which will send to index php and go to: if(isset($_POST['delete'])){
-              echo "<form action='index.php' method='POST'>
-                <input type='hidden' name='delete' value='delete article'/>
-                <input type='hidden' name='article_id' value={$item['article_id']}>
-                <input class='btn' type='submit' value='delete'/>
-              </form>";
+              echo "<div class='form-container'>
+                <div class='form-left'>
+                  <form action='index.php' method='GET'>
+                    <input type='hidden' name='edit_view' value='edit article'/>
+                    <input type='hidden' name='article_id' value={$item['article_id']}>
+                    <input class='button-white' type='submit' value='Edit'/>
+                  </form>
+                </div>";
+                //This is to delete article which will send to index php and go to: if(isset($_POST['delete'])){
+                echo "
+                <div class='form-right'>
+                  <form action='index.php' method='POST'>
+                    <input type='hidden' name='delete' value='delete article'/>
+                    <input type='hidden' name='article_id' value={$item['article_id']}>
+                    <input class='button-blue' type='submit' value='Delete'/>
+                  </form>
+                  </div>
+                </div>";
 
               }
+              echo "</div>";
+              echo "<hr>";
              }
+
            }
           //if there is nothing in the database
          else{
-           echo "<p>No results</p>";
+           err_message("There were no results","");
           }
 
 
-        echo "
-
-          </div>
-        </div>";
+        echo "</div>";
       include VIEWS.'/footer.php';
   ?>

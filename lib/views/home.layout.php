@@ -18,14 +18,22 @@
 
 <body>
 <section>
-  <div class="container-fluid text-center">
-    <div class="p-2">
+  <div class="container-fluid text-center p-2">
       <h1 class="text-uppercase">AUSTRO-ASIAN TIMES</h1>
-      <p class="lead font-italic">News for Northern Australia and Southeast Asia</p>
+      <p class="lead font-18 font-italic">News for Northern Australia and Southeast Asia</p>
+      <?php
+      if(isset($_SESSION['username'])){
+        echo "<h4 class='font-15'>Welcome back ".$_SESSION['username'].", to Austro-Asian Times!</h5>";
+      }
+      else{
+        echo "<h4 class='font-15'>Welcome to Austro-Asian Times</h5>";
+      }
+      ?>
+
+      <!--nav-->
       <div class="row">
         <div class='col'>
         <a href='?articles'>Home</a>
-
         <?php
           if(isset($_SESSION['loggedin'])){
             echo "<a href='?newarticle'>New Article</a>
@@ -37,8 +45,8 @@
           }
         ?>
         </div>
-      </div>
-  </div>
+    </div>
+    <!--end of nav-->
 </div>
 </section>
 <br>
