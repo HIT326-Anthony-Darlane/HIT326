@@ -1,5 +1,5 @@
 <?php
-echo "<div class = 'container text-center'>
+echo "<div class = 'container-fluid text-center'>
 <div class='p-3'>";
 if(isset($_SESSION['username'])){
   echo "<h4 class='lead'>Welcome back ".$_SESSION['username'].", to Austro-Asian Times!</h3>";
@@ -13,9 +13,11 @@ echo "
 <br>";
 
 //container div
-echo "<div class='container'>";
+echo "<div class='container-fluid'>";
+echo "<div class='container p-3'>";
 //div to add padding
-echo "<div class='p-3'>";
+
+
 //WILL SHOW ALL ARTICLES IN DATABASE
 //find what we looking for in sql and will order it by descending order aka. newest first
 $db=get_db();
@@ -26,7 +28,7 @@ if(!empty($result)){
          //Loop getting each name
            while($item = mysqli_fetch_array($result)){
              echo
-             "<h2>{$item['title']}</h2>
+             "<h2 class='text-capitalize'>{$item['title']}</h2>
              <p class='text-justify'>{$item['content']}</p>
              <div class=''>
              <p>Tags:";
@@ -51,14 +53,13 @@ if(!empty($result)){
               echo "<form action='index.php' method='GET'>
                 <input type='hidden' name='edit_view' value='edit article'/>
                 <input type='hidden' name='article_id' value={$item['article_id']}>
-                <input type='submit' value='edit'/>
+                <input class='btn' type='submit' value='edit'/>
               </form>";
-
               //This is to delete article which will send to index php and go to: if(isset($_POST['delete'])){
               echo "<form action='index.php' method='POST'>
                 <input type='hidden' name='delete' value='delete article'/>
                 <input type='hidden' name='article_id' value={$item['article_id']}>
-                <input type='submit' value='delete'/>
+                <input class='btn' type='submit' value='delete'/>
               </form>";
 
               }
@@ -68,9 +69,11 @@ if(!empty($result)){
          else{
            echo "<p>No results</p>";
           }
-          //ends the padding div
-          echo "</div>";
-          //ends container div
-        echo "</div>";
+
+
+        echo "
+
+          </div>
+        </div>";
       include VIEWS.'/footer.php';
   ?>

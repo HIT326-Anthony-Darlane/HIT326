@@ -2,7 +2,7 @@
 <br>
   <footer>
     <div class="container-fluid text-center">
-      <p class="p-2">THIS IS A FOOT</p>
+      <p class="p-2">Darlane Tang, Anthony Thai</p>
     </div>
   </footer>
 

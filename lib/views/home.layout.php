@@ -12,24 +12,32 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css?v=<?php echo time();?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/style.css?v=<?php echo time();?>">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
 
 <body>
 <section>
   <div class="container-fluid text-center">
     <div class="p-2">
-      <h1>AUSTRO-ASIAN TIMES</h1>
-      <p class="lead">News for Northern Australia and Southeast Asia</p>
-      <a href='?articles'>Home</a>
+      <h1 class="text-uppercase">AUSTRO-ASIAN TIMES</h1>
+      <p class="lead font-italic">News for Northern Australia and Southeast Asia</p>
+      <div class="row">
+        <div class='col'>
+        <a href='?articles'>Home</a>
+
         <?php
           if(isset($_SESSION['loggedin'])){
-            echo "<a href='?newarticle'>New Article</a> ";
-            echo "<a href='?logout'>Log Out</a>";
+            echo "<a href='?newarticle'>New Article</a>
+              <a href='?logout'>Log Out</a>";
           }
           else{
-            echo "<a href='?signin'>Signin</a> ";
-            echo "<a href='?signup'>Signup</a>";
+            echo "<a href='?signin'>Signin</a>
+            <a href='?signup'>Signup</a>";
           }
         ?>
+        </div>
+      </div>
   </div>
 </div>
 </section>

@@ -1,2 +1,1 @@
-<label for='uPassword'>Password:</label>
-<input type='password' name='password'/>
+<input type='password' name='password' placeholder='Password'/>

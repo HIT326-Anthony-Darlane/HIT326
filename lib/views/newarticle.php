@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container-fluid text-center p-3">
     <form action='index.php' method='POST'>
       <input type='hidden' name='submitarticle' value='Submit Article'>
       <?php
@@ -11,5 +11,5 @@
       <br>
     <input type='submit' value='Post Article'>
     </form>
-  <?php include VIEWS.'/footer.php'?>
-</div>
+  </div>
+<?php include VIEWS.'/footer.php'?>

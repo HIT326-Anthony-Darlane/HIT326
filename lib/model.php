@@ -59,12 +59,18 @@ function signin($username,$password){
     }
     else{
   //if password wrong, will say this
-  echo "entered wrong password";
+  echo "
+  <div class='container-fluid text-center p-3'>
+  <p>Entered wrong password!</p>
+  </div>";
   }
 }
 else {
   //if username is not in datase
-  echo "invalid username";
+  echo "
+  <div class='container-fluid text-center p-3'>
+  <p>Invalid Username</p>
+  </div>";
   }
 }
 
@@ -78,7 +84,7 @@ function signup($username,$firstname,$lastname,$password){
   //if the username is found in the database, will output message that it already exists
   if($count == 1){
     echo "
-    <div class='container text-center'>
+    <div class='container-fluid text-center p-3'>
     <p>uh oh!</p>
     <p>This username already exists!</p>
     </div>
@@ -94,14 +100,16 @@ function signup($username,$firstname,$lastname,$password){
     //when you press submit, it will show this message if successful
     if($run){
       echo "
-      <div class='container text-center'>
+      <div class='container-fluid text-center p-3'>
       <p>Added new user!</p>
       <p>You can now sign in!</p>
       </div>
       ";
     }
     else{
-      echo "<p>There was a problem making this user</p>";
+      echo "<div class='container-fluid text-center p-3'>
+      <p>There was a problem making this user</p>
+      </div";
     }
   }
 }

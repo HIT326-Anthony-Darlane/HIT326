@@ -1,2 +1,1 @@
-<label for='uUsername'>Username:</label>
-<input type='text' name='username'/>
+<input type='text' name='username' placeholder='Username'/>

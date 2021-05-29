@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container-fluid text-center">
   <h3>Sign up!</h3>
   <form action='index.php' method='POST'>
     <input type='hidden' name='signup' value='signup'>
@@ -12,7 +12,7 @@
       require PARTIALS.'/form.password.php';
       echo "<br>";
       ?>
-      <input type='submit' value='Sign up!'>
+      <input class='btn' type='submit' value='Sign up!'>
     </form>
   </div>
   <?php include VIEWS.'/footer.php'?>

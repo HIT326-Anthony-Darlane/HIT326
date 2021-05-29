@@ -21,7 +21,6 @@ DEFINE("LAYOUT","home");
 
 //when the link is pressed it will come here and do this
       if(isset($_GET['articles'])){
-        
         require VIEWS.'/article.php';
         exit();
       }
@@ -47,7 +46,14 @@ DEFINE("LAYOUT","home");
       }
       //if user did not fill in all inputs, they will be redirected here. you can see more below.
       if(isset($_GET['emptyinput'])){
-        echo "You must've forgotten to fill something in :(";
+        echo "<div class='container-fluid text-center p-3'>
+            <h3>Uh Oh!</h3>
+            <h4>You must've forgotten to fill something in :(</h4>
+          </div>";
+      }
+
+      if(isset($_GET['articles'])){
+
       }
 
       //this part for adding the new article
