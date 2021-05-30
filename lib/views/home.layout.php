@@ -4,8 +4,6 @@
 <head>
   <meta charset='utf-8'/>
   <title>Austro-Asian Times</title>
-  <!--put echo time() because css would not load properly cause of cache?-->
-
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css?v=<?php echo time();?>">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css?v=<?php echo time();?>">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css?v=<?php echo time();?>">

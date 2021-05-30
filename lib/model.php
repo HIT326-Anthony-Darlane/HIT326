@@ -11,8 +11,6 @@ function get_db(){
 
     $db=mysqli_connect($server,$username,$password,$dbname);
   }
-  //catch code will run if above aint right pre much acts as the 'else' statement to your if
-  //copied it too
   catch(PDOException $e){
     $errors[]=$e->getMessage();
   }
@@ -88,7 +86,7 @@ function signup($username,$firstname,$lastname,$password){
   else{
     //Salting password for security//
     $hashed_password = password_hash($password,PASSWORD_DEFAULT);
-    //so that it can insert into database, dont know how specifically but it works
+    //so that it can insert into database
     $query = "INSERT INTO users (username, firstname, lastname,password) VALUES ('$username','$firstname','$lastname','$hashed_password')" ;
     $run = mysqli_query($db,$query) or die(mysqli_error());
     //when you press submit, it will show this message if successful
@@ -103,7 +101,6 @@ function signup($username,$firstname,$lastname,$password){
 
 function submit_article($article_id,$title,$content,$user_id,$tags,$tags_list){
   $db=get_db();
-  //so that it can insert into database, dont know how specifically but it works
   $query = "INSERT INTO article (article_id,title, content,user_id) VALUES ('$article_id','$title','$content','$user_id')" ;
   $run = mysqli_query($db,$query) or die(mysqli_error());
 
@@ -115,7 +112,6 @@ function submit_article($article_id,$title,$content,$user_id,$tags,$tags_list){
     $taggingquery="INSERT INTO tagging (article_id,tag_id) VALUES ('$article_id','$tag_id')";
     $run = mysqli_query($db,$taggingquery) or die(mysqli_error());
   }
-  //when you press submit, it will show this message
   if($run){
     header('location:index.php?articles');
     exit();

@@ -5,7 +5,6 @@ echo "<div class='container-fluid'>";
 echo "<hr>";
 
 //WILL SHOW ALL ARTICLES IN DATABASE
-//find what we looking for in sql and will order it by descending order aka. newest first
 $db=get_db();
 $sql= "SELECT * FROM article i, users ii where i.user_id=ii.user_id order by created_date desc";
 $result = $db->query($sql);
@@ -43,7 +42,7 @@ if(!empty($result)){
                     <input class='button-white' type='submit' value='Edit'/>
                   </form>
                 </div>";
-                //This is to delete article which will send to index php and go to: if(isset($_POST['delete'])){
+
                 echo "
                 <div class='form-right'>
                   <form action='index.php' method='POST'>

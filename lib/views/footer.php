@@ -1,4 +1,3 @@
-<!--Base template for footer-->
 <br>
   <footer>
     <div class="container-fluid text-center">
